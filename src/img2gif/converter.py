@@ -7,8 +7,6 @@ the conversion of image sequences into animated GIF files.
 
 from pathlib import Path
 
-import imageio.v3 as iio
-import numpy as np
 from PIL import Image
 from rich.console import Console
 
@@ -178,7 +176,7 @@ class ImageToGifConverter:
 
         raise InvalidInputError(f"Input path is neither file nor directory: {input_path}")
 
-    def _load_images(self, image_files: list[Path]) -> list[object]:
+    def _load_images(self, image_files: list[Path]) -> list[Image.Image]:
         """
         🖼️ Load all images from file paths.
 
@@ -186,7 +184,7 @@ class ImageToGifConverter:
             image_files: List of paths to image files
 
         Returns:
-            List of loaded image arrays
+            List of loaded PIL Image objects
 
         Raises:
             ImageLoadError: If any image fails to load
@@ -195,8 +193,11 @@ class ImageToGifConverter:
 
         for idx, image_file in enumerate(image_files):
             try:
-                # Load image using imageio 📸
-                image = iio.imread(image_file)
+                # Load image using PIL 📸
+                image = Image.open(image_file)
+                # Convert to RGB if needed (handles RGBA, grayscale, etc.)
+                if image.mode not in ("RGB", "P"):
+                    image = image.convert("RGB")
                 images.append(image)
             except Exception as e:
                 raise ImageLoadError(
@@ -207,7 +208,7 @@ class ImageToGifConverter:
 
     def _create_gif(
         self,
-        images: list[object],
+        images: list[Image.Image],
         output_path: Path,
         duration: Duration,
         loop: int,
@@ -216,7 +217,7 @@ class ImageToGifConverter:
         🎞️ Create GIF file from loaded images.
 
         Args:
-            images: List of loaded image arrays
+            images: List of loaded PIL Image objects
             output_path: Where to save the GIF
             duration: Frame duration(s) in seconds
             loop: Loop count (0 = infinite)
@@ -228,63 +229,59 @@ class ImageToGifConverter:
             # Ensure output directory exists 📂
             output_path.parent.mkdir(parents=True, exist_ok=True)
 
-            # Convert duration to milliseconds for imageio
+            # Convert duration to milliseconds (PIL expects integers)
             if isinstance(duration, (int, float)):
-                duration_ms = duration * 1000
+                duration_ms = int(duration * 1000)
             else:
-                duration_ms = [d * 1000 for d in duration]
+                duration_ms = [int(d * 1000) for d in duration]
 
-            # Create GIF using imageio ✨
-            iio.imwrite(
+            # Create GIF using PIL ✨
+            # save_all=True for animated GIF, append_images for remaining frames
+            images[0].save(
                 output_path,
-                images,
+                save_all=True,
+                append_images=images[1:],
                 duration=duration_ms,
                 loop=loop,
+                optimize=False,
             )
 
         except Exception as e:
             raise ConversionError(f"Failed to create GIF: {str(e)}") from e
 
-    def _resize_images(self, images: list[object], config: GifConfig) -> list[object]:
+    def _resize_images(self, images: list[Image.Image], config: GifConfig) -> list[Image.Image]:
         """
         📏 Resize images according to configuration.
 
         Args:
-            images: List of loaded image arrays
+            images: List of loaded PIL Image objects
             config: Configuration with resize parameters
 
         Returns:
-            List of resized image arrays
+            List of resized PIL Image objects
         """
         if not images:
             return images
 
         # Get current dimensions from first image
         first_image = images[0]
-        if hasattr(first_image, "shape"):
-            current_height, current_width = first_image.shape[:2]
-        else:
-            return images
+        current_width, current_height = first_image.size
 
         # Calculate target size
         target_width, target_height = config.get_target_size(current_width, current_height)
 
         # Resize all images using PIL (high quality resizing)
         resized_images = []
-        for img_array in images:
-            # Convert to PIL Image
-            pil_image = Image.fromarray(img_array.astype("uint8"))
+        for img in images:
             # Resize with high-quality Lanczos filter
-            resized_pil = pil_image.resize((target_width, target_height), Image.Resampling.LANCZOS)
-            # Convert back to array
-            resized_array = np.array(resized_pil)
-            resized_images.append(resized_array)
+            resized = img.resize((target_width, target_height), Image.Resampling.LANCZOS)
+            resized_images.append(resized)
 
         return resized_images
 
     def _create_gif_with_config(
         self,
-        images: list[object],
+        images: list[Image.Image],
         output_path: Path,
         config: GifConfig,
     ) -> None:
@@ -292,7 +289,7 @@ class ImageToGifConverter:
         🎞️ Create GIF file using configuration object.
 
         Args:
-            images: List of loaded (and possibly resized) image arrays
+            images: List of loaded (and possibly resized) PIL Image objects
             output_path: Where to save the GIF
             config: Configuration with GIF generation parameters
 
@@ -306,20 +303,21 @@ class ImageToGifConverter:
             # Get effective duration
             duration = config.get_duration()
 
-            # Convert duration to milliseconds for imageio
+            # Convert duration to milliseconds (PIL expects integers)
             if isinstance(duration, (int, float)):
-                duration_ms = duration * 1000
+                duration_ms = int(duration * 1000)
             else:
-                duration_ms = [d * 1000 for d in duration]
+                duration_ms = [int(d * 1000) for d in duration]
 
-            # Prepare writer options
-            writer_kwargs = {
-                "duration": duration_ms,
-                "loop": config.loop,
-            }
-
-            # Create GIF using imageio ✨
-            iio.imwrite(output_path, images, **writer_kwargs)
+            # Create GIF using PIL with config options ✨
+            images[0].save(
+                output_path,
+                save_all=True,
+                append_images=images[1:],
+                duration=duration_ms,
+                loop=config.loop,
+                optimize=config.optimize,
+            )
 
         except Exception as e:
             raise ConversionError(f"Failed to create GIF: {str(e)}") from e
