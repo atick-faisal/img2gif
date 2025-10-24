@@ -107,7 +107,6 @@ nav:
 # Plugins 🔌
 plugins:
   - search
-  - autorefs
 
 # Extra configuration ✨
 extra:
