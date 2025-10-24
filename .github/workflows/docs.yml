@@ -36,8 +36,8 @@ jobs:
       - name: 📦 Install uv
         uses: astral-sh/setup-uv@v2
 
-      - name: 🔧 Install dependencies
-        run: uv pip install --system mkdocs mkdocs-material pymdown-extensions
+      - name: 🔧 Install documentation dependencies
+        run: uv pip install --system -e ".[docs]"
 
       - name: 🏗️ Build documentation
         run: mkdocs build --verbose
