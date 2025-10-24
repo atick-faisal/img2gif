@@ -177,9 +177,7 @@ def main(
 
     except Exception as e:
         # Handle unexpected errors
-        console.print(
-            f"\n[bold red]💥 Unexpected error:[/bold red] {str(e)}\n", style="red"
-        )
+        console.print(f"\n[bold red]💥 Unexpected error:[/bold red] {str(e)}\n", style="red")
         if verbose:
             console.print_exception()
         raise click.Abort() from e

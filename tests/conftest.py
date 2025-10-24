@@ -6,7 +6,6 @@ test environments, sample images, and other testing utilities.
 """
 
 from pathlib import Path
-from typing import Generator
 
 import numpy as np
 import pytest

@@ -6,7 +6,6 @@ the conversion of image sequences into animated GIF files.
 """
 
 from pathlib import Path
-from typing import Optional
 
 import imageio.v3 as iio
 import numpy as np
@@ -165,9 +164,7 @@ class ImageToGifConverter:
             # Single file - validate it's an image
             if input_path.suffix.lower() in SUPPORTED_FORMATS:
                 return [input_path]
-            raise InvalidInputError(
-                f"File is not a supported image format: {input_path.suffix}"
-            )
+            raise InvalidInputError(f"File is not a supported image format: {input_path.suffix}")
 
         if input_path.is_dir():
             # Directory - find all images
@@ -248,9 +245,7 @@ class ImageToGifConverter:
         except Exception as e:
             raise ConversionError(f"Failed to create GIF: {str(e)}") from e
 
-    def _resize_images(
-        self, images: list[object], config: GifConfig
-    ) -> list[object]:
+    def _resize_images(self, images: list[object], config: GifConfig) -> list[object]:
         """
         📏 Resize images according to configuration.
 
@@ -272,20 +267,16 @@ class ImageToGifConverter:
             return images
 
         # Calculate target size
-        target_width, target_height = config.get_target_size(
-            current_width, current_height
-        )
+        target_width, target_height = config.get_target_size(current_width, current_height)
 
-        # Resize all images
+        # Resize all images using PIL (high quality resizing)
         resized_images = []
         for img_array in images:
-            # Convert numpy array to PIL Image for resizing
-            pil_image = Image.fromarray(np.uint8(img_array))
-            # Resize with high-quality resampling
-            resized_pil = pil_image.resize(
-                (target_width, target_height), Image.Resampling.LANCZOS
-            )
-            # Convert back to numpy array
+            # Convert to PIL Image
+            pil_image = Image.fromarray(img_array.astype("uint8"))
+            # Resize with high-quality Lanczos filter
+            resized_pil = pil_image.resize((target_width, target_height), Image.Resampling.LANCZOS)
+            # Convert back to array
             resized_array = np.array(resized_pil)
             resized_images.append(resized_array)
 

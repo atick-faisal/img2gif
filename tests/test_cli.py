@@ -42,9 +42,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_fps.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--fps", "10"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--fps", "10"])
 
         assert result.exit_code == 0
         assert output_path.exists()
@@ -54,9 +52,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_loop.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--loop", "3"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--loop", "3"])
 
         assert result.exit_code == 0
         assert output_path.exists()
@@ -66,9 +62,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_quality.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--quality", "95"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--quality", "95"])
 
         assert result.exit_code == 0
         assert output_path.exists()
@@ -78,9 +72,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_optimize.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--optimize"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--optimize"])
 
         assert result.exit_code == 0
         assert output_path.exists()
@@ -90,9 +82,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_width.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--width", "50"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--width", "50"])
 
         assert result.exit_code == 0
         assert output_path.exists()
@@ -102,16 +92,12 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_height.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--height", "50"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--height", "50"])
 
         assert result.exit_code == 0
         assert output_path.exists()
 
-    def test_cli_with_multiple_options(
-        self, sample_images_dir: Path, temp_dir: Path
-    ) -> None:
+    def test_cli_with_multiple_options(self, sample_images_dir: Path, temp_dir: Path) -> None:
         """✅ Test CLI with multiple options combined."""
         runner = CliRunner()
         output_path = temp_dir / "cli_combined.gif"
@@ -139,9 +125,7 @@ class TestCLI:
         runner = CliRunner()
         output_path = temp_dir / "cli_verbose.gif"
 
-        result = runner.invoke(
-            main, [str(sample_images_dir), str(output_path), "--verbose"]
-        )
+        result = runner.invoke(main, [str(sample_images_dir), str(output_path), "--verbose"])
 
         assert result.exit_code == 0
         assert output_path.exists()

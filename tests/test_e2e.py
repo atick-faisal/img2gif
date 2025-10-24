@@ -17,9 +17,7 @@ from img2gif import GifConfig, ImageToGifConverter
 class TestE2EWorkflows:
     """End-to-end test suite 🎬"""
 
-    def test_directory_to_gif_workflow(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_directory_to_gif_workflow(self, sample_images_dir: Path, output_path: Path) -> None:
         """🎬 Test complete workflow: directory of images to GIF."""
         converter = ImageToGifConverter()
         converter.convert(sample_images_dir, output_path, duration=0.5)
@@ -33,9 +31,7 @@ class TestE2EWorkflows:
         assert gif_data is not None
         assert len(gif_data.shape) >= 2  # Has dimensions
 
-    def test_single_image_to_gif_workflow(
-        self, single_image: Path, output_path: Path
-    ) -> None:
+    def test_single_image_to_gif_workflow(self, single_image: Path, output_path: Path) -> None:
         """🎬 Test complete workflow: single image to GIF."""
         converter = ImageToGifConverter()
         converter.convert(single_image, output_path)
@@ -97,9 +93,7 @@ class TestE2EWorkflows:
         assert output_path.exists()
         assert output_path.stat().st_size > 0
 
-    def test_optimized_gif_workflow(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_optimized_gif_workflow(self, sample_images_dir: Path, output_path: Path) -> None:
         """🎬 Test workflow with optimization enabled."""
         config = GifConfig(duration=0.5, optimize=True, quality=75)
 
@@ -144,9 +138,7 @@ class TestE2EWorkflows:
         assert nested_output.exists()
         assert nested_output.parent.exists()
 
-    def test_mixed_files_directory_workflow(
-        self, mixed_files_dir: Path, output_path: Path
-    ) -> None:
+    def test_mixed_files_directory_workflow(self, mixed_files_dir: Path, output_path: Path) -> None:
         """🎬 Test workflow with directory containing mixed file types."""
         converter = ImageToGifConverter()
         converter.convert(mixed_files_dir, output_path)
@@ -155,9 +147,7 @@ class TestE2EWorkflows:
         assert output_path.exists()
         assert output_path.stat().st_size > 0
 
-    def test_duration_list_workflow(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_duration_list_workflow(self, sample_images_dir: Path, output_path: Path) -> None:
         """🎬 Test workflow with different duration per frame."""
         converter = ImageToGifConverter()
         # Different duration for each of the 3 frames
