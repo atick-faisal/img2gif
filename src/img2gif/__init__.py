@@ -16,6 +16,7 @@ __author__ = "img2gif contributors"
 __license__ = "MIT"
 
 # Public API exports 🎉
+from .config import GifConfig, create_config
 from .converter import ImageToGifConverter
 from .exceptions import (
     ConversionError,
@@ -30,6 +31,9 @@ __all__ = [
     "__version__",
     # Core converter
     "ImageToGifConverter",
+    # Configuration
+    "GifConfig",
+    "create_config",
     # Exceptions
     "Img2GifError",
     "InvalidInputError",

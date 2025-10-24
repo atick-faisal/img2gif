@@ -5,13 +5,15 @@ This module provides the main ImageToGifConverter class which handles
 the conversion of image sequences into animated GIF files.
 """
 
-import os
 from pathlib import Path
 from typing import Optional
 
 import imageio.v3 as iio
+import numpy as np
+from PIL import Image
 from rich.console import Console
 
+from .config import GifConfig
 from .exceptions import (
     ConversionError,
     ImageLoadError,
@@ -89,6 +91,60 @@ class ImageToGifConverter:
 
         # Convert to GIF 🎞️
         self._create_gif(images, output_path, duration, loop)
+
+        self.console.print(f"[green]✅ GIF created successfully:[/green] {output_path}")
+
+    def convert_with_config(
+        self,
+        input_path: PathLike,
+        output_path: PathLike,
+        config: GifConfig,
+    ) -> None:
+        """
+        🎬 Convert images to GIF using a configuration object.
+
+        This method provides more fine-grained control over GIF generation
+        through a GifConfig object, including resizing, quality, and optimization.
+
+        Args:
+            input_path: Path to directory containing images or a single image file
+            output_path: Path where the GIF should be saved
+            config: GifConfig object with conversion settings
+
+        Raises:
+            InvalidInputError: If input path doesn't exist or is invalid
+            NoImagesFoundError: If no valid images found in input directory
+            ImageLoadError: If images cannot be loaded
+            ConversionError: If GIF creation fails
+
+        Example:
+            >>> from img2gif import ImageToGifConverter, GifConfig
+            >>> converter = ImageToGifConverter()
+            >>> config = GifConfig(fps=10, optimize=True, width=800)
+            >>> converter.convert_with_config("./frames", "output.gif", config)
+        """
+        # Validate inputs 🔍
+        input_path = Path(input_path)
+        output_path = Path(output_path)
+
+        if not input_path.exists():
+            raise InvalidInputError(f"Input path does not exist: {input_path}")
+
+        # Get list of image files 📁
+        image_files = self._get_image_files(input_path)
+
+        if not image_files:
+            raise NoImagesFoundError(f"No valid images found in: {input_path}")
+
+        # Load images 🖼️
+        images = self._load_images(image_files)
+
+        # Resize images if needed 📏
+        if config.should_resize() and images:
+            images = self._resize_images(images, config)
+
+        # Convert to GIF with config 🎞️
+        self._create_gif_with_config(images, output_path, config)
 
         self.console.print(f"[green]✅ GIF created successfully:[/green] {output_path}")
 
@@ -188,6 +244,91 @@ class ImageToGifConverter:
                 duration=duration_ms,
                 loop=loop,
             )
+
+        except Exception as e:
+            raise ConversionError(f"Failed to create GIF: {str(e)}") from e
+
+    def _resize_images(
+        self, images: list[object], config: GifConfig
+    ) -> list[object]:
+        """
+        📏 Resize images according to configuration.
+
+        Args:
+            images: List of loaded image arrays
+            config: Configuration with resize parameters
+
+        Returns:
+            List of resized image arrays
+        """
+        if not images:
+            return images
+
+        # Get current dimensions from first image
+        first_image = images[0]
+        if hasattr(first_image, "shape"):
+            current_height, current_width = first_image.shape[:2]
+        else:
+            return images
+
+        # Calculate target size
+        target_width, target_height = config.get_target_size(
+            current_width, current_height
+        )
+
+        # Resize all images
+        resized_images = []
+        for img_array in images:
+            # Convert numpy array to PIL Image for resizing
+            pil_image = Image.fromarray(np.uint8(img_array))
+            # Resize with high-quality resampling
+            resized_pil = pil_image.resize(
+                (target_width, target_height), Image.Resampling.LANCZOS
+            )
+            # Convert back to numpy array
+            resized_array = np.array(resized_pil)
+            resized_images.append(resized_array)
+
+        return resized_images
+
+    def _create_gif_with_config(
+        self,
+        images: list[object],
+        output_path: Path,
+        config: GifConfig,
+    ) -> None:
+        """
+        🎞️ Create GIF file using configuration object.
+
+        Args:
+            images: List of loaded (and possibly resized) image arrays
+            output_path: Where to save the GIF
+            config: Configuration with GIF generation parameters
+
+        Raises:
+            ConversionError: If GIF creation fails
+        """
+        try:
+            # Ensure output directory exists 📂
+            output_path.parent.mkdir(parents=True, exist_ok=True)
+
+            # Get effective duration
+            duration = config.get_duration()
+
+            # Convert duration to milliseconds for imageio
+            if isinstance(duration, (int, float)):
+                duration_ms = duration * 1000
+            else:
+                duration_ms = [d * 1000 for d in duration]
+
+            # Prepare writer options
+            writer_kwargs = {
+                "duration": duration_ms,
+                "loop": config.loop,
+            }
+
+            # Create GIF using imageio ✨
+            iio.imwrite(output_path, images, **writer_kwargs)
 
         except Exception as e:
             raise ConversionError(f"Failed to create GIF: {str(e)}") from e
