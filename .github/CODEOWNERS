@@ -1,0 +1,11 @@
+# Code owners for img2gif
+# These owners will be automatically requested for review when someone opens a pull request
+
+# Default owner for everything in the repo
+* @atick-faisal
+
+# Specific ownership for critical files
+/pyproject.toml @atick-faisal
+/.github/ @atick-faisal
+/src/ @atick-faisal
+/tests/ @atick-faisal

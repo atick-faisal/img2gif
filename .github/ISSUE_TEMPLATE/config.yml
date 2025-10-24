@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://atick-faisal.github.io/img2gif/
+    about: Check out our documentation for usage guides and examples
+  - name: Discussions
+    url: https://github.com/atick-faisal/img2gif/discussions
+    about: Ask questions and discuss ideas with the community
