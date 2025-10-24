@@ -174,10 +174,11 @@ class TestImageToGifConverter:
         # Should have loaded 3 images
         assert len(images) == 3
 
-        # Each should be an array-like object
+        # Each should be a PIL Image object
         for img in images:
             assert img is not None
-            assert hasattr(img, "shape")  # numpy array-like
+            assert hasattr(img, "size")  # PIL Image has .size attribute
+            assert img.mode in ("RGB", "P")  # Should be converted to RGB or P mode
 
 
 @pytest.mark.unit

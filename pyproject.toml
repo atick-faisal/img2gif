@@ -12,7 +12,7 @@ license = { text = "MIT" }
 authors = [
     { name = "img2gif contributors" },
 ]
-keywords = ["gif", "image", "animation", "converter", "imageio"]
+keywords = ["gif", "image", "animation", "converter", "pillow"]
 classifiers = [
     "Development Status :: 3 - Alpha",
     "Intended Audience :: Developers",
@@ -27,12 +27,9 @@ classifiers = [
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
 dependencies = [
-    "imageio>=2.31.0",
-    "imageio-ffmpeg>=0.4.9",
     "rich>=13.7.0",
     "click>=8.1.0",
     "Pillow>=10.0.0",
-    "numpy>=1.24.0",
 ]
 
 [project.optional-dependencies]
@@ -42,8 +39,6 @@ dev = [
     "ruff>=0.1.0",
     "hatch>=1.9.0",
     "pre-commit>=3.5.0",
-    "numpy>=1.24.0",
-    "Pillow>=10.0.0",
 ]
 docs = [
     "mkdocs>=1.5.0",

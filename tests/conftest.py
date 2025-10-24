@@ -7,7 +7,6 @@ test environments, sample images, and other testing utilities.
 
 from pathlib import Path
 
-import numpy as np
 import pytest
 from PIL import Image
 
@@ -51,8 +50,7 @@ def sample_images_dir(temp_dir: Path) -> Path:
 
     for idx, color in enumerate(colors):
         # Create a 100x100 solid color image
-        img_array = np.full((100, 100, 3), color, dtype=np.uint8)
-        img = Image.fromarray(img_array)
+        img = Image.new("RGB", (100, 100), color)
         img.save(images_dir / f"image_{idx + 1}.png")
 
     return images_dir
@@ -70,8 +68,7 @@ def single_image(temp_dir: Path) -> Path:
         Path to single image file
     """
     # Create a simple yellow image
-    img_array = np.full((100, 100, 3), (255, 255, 0), dtype=np.uint8)
-    img = Image.fromarray(img_array)
+    img = Image.new("RGB", (100, 100), (255, 255, 0))
 
     image_path = temp_dir / "single_image.png"
     img.save(image_path)
@@ -94,8 +91,7 @@ def mixed_files_dir(temp_dir: Path) -> Path:
     mixed_dir.mkdir()
 
     # Create an image
-    img_array = np.full((50, 50, 3), (128, 128, 128), dtype=np.uint8)
-    img = Image.fromarray(img_array)
+    img = Image.new("RGB", (50, 50), (128, 128, 128))
     img.save(mixed_dir / "valid_image.png")
 
     # Create a text file (should be ignored)
@@ -172,13 +168,12 @@ def various_formats_dir(temp_dir: Path) -> Path:
     formats_dir.mkdir()
 
     # Create a simple image
-    img_array = np.full((100, 100, 3), (200, 100, 50), dtype=np.uint8)
-    img = Image.fromarray(img_array)
+    img = Image.new("RGB", (100, 100), (200, 100, 50))
 
     # Save in different formats
     img.save(formats_dir / "test.png")
     img.save(formats_dir / "test.jpg")
     img.save(formats_dir / "test.bmp")
-    img.convert("RGB").save(formats_dir / "test.webp")
+    img.save(formats_dir / "test.webp")
 
     return formats_dir

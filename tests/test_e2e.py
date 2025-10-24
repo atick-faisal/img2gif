@@ -7,8 +7,8 @@ the entire pipeline from image loading to GIF creation.
 
 from pathlib import Path
 
-import imageio.v3 as iio
 import pytest
+from PIL import Image
 
 from img2gif import GifConfig, ImageToGifConverter
 
@@ -27,9 +27,9 @@ class TestE2EWorkflows:
         assert output_path.stat().st_size > 0
 
         # Verify we can read the GIF back
-        gif_data = iio.imread(output_path)
-        assert gif_data is not None
-        assert len(gif_data.shape) >= 2  # Has dimensions
+        with Image.open(output_path) as gif:
+            assert gif is not None
+            assert gif.size[0] > 0 and gif.size[1] > 0  # Has dimensions
 
     def test_single_image_to_gif_workflow(self, single_image: Path, output_path: Path) -> None:
         """🎬 Test complete workflow: single image to GIF."""
@@ -50,8 +50,8 @@ class TestE2EWorkflows:
         assert output_path.stat().st_size > 0
 
         # Verify GIF contains multiple frames
-        gif_data = iio.imread(output_path)
-        assert gif_data is not None
+        with Image.open(output_path) as gif:
+            assert gif is not None
 
     def test_config_based_workflow_with_resize(
         self, sample_images_dir: Path, output_path: Path
@@ -72,14 +72,10 @@ class TestE2EWorkflows:
         assert output_path.stat().st_size > 0
 
         # Verify the GIF has the expected dimensions
-        gif_data = iio.imread(output_path)
-        if len(gif_data.shape) == 4:  # Animated GIF
-            _, height, width, _ = gif_data.shape
-        else:  # Single frame
-            height, width = gif_data.shape[:2]
-
-        assert width == 50
-        assert height == 50
+        with Image.open(output_path) as gif:
+            width, height = gif.size
+            assert width == 50
+            assert height == 50
 
     def test_config_based_workflow_with_fps(
         self, sample_images_dir: Path, output_path: Path
@@ -116,15 +112,11 @@ class TestE2EWorkflows:
         assert output_path.stat().st_size > 0
 
         # Verify dimensions
-        gif_data = iio.imread(output_path)
-        if len(gif_data.shape) == 4:
-            _, height, width, _ = gif_data.shape
-        else:
-            height, width = gif_data.shape[:2]
-
-        assert width == 80
-        # Height should be scaled proportionally (original is 100x100)
-        assert height == 80
+        with Image.open(output_path) as gif:
+            width, height = gif.size
+            assert width == 80
+            # Height should be scaled proportionally (original is 100x100)
+            assert height == 80
 
     def test_nested_output_directory_workflow(
         self, sample_images_dir: Path, temp_dir: Path
