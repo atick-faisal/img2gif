@@ -1,12 +1,12 @@
 """
-🎬 img2gif - A playful Python library for converting image sequences into animated GIFs
+🎬 imgif - A playful Python library for converting image sequences into animated GIFs
 
 This library provides a simple and intuitive API for creating animated GIFs from
 sequences of images. It's designed to be easy to use while offering powerful
 configuration options for advanced users.
 
 Example:
-    >>> from img2gif import ImageToGifConverter
+    >>> from imgif import ImageToGifConverter
     >>> converter = ImageToGifConverter()
     >>> converter.convert("./images", "output.gif", duration=0.5)
 """

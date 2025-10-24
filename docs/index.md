@@ -1,8 +1,8 @@
-# 🎬 Welcome to img2gif!
+# 🎬 Welcome to imgif!
 
 > ✨ A playful Python library for converting image sequences into animated GIFs with ease!
 
-Turn your image sequences into delightful animated GIFs with just a few lines of code. Whether you're creating animations from screenshots, visualizing data, or just having fun, `img2gif` makes it simple and enjoyable! 🚀
+Turn your image sequences into delightful animated GIFs with just a few lines of code. Whether you're creating animations from screenshots, visualizing data, or just having fun, `imgif` makes it simple and enjoyable! 🚀
 
 ## Features
 
@@ -19,7 +19,7 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
 === "Python API"
 
     ```python
-    from img2gif import ImageToGifConverter
+    from imgif import ImageToGifConverter
 
     # Create converter
     converter = ImageToGifConverter()
@@ -38,19 +38,19 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
 
     ```bash
     # Basic usage
-    img2gif ./my_images output.gif
+    imgif ./my_images output.gif
 
     # With options
-    img2gif ./my_images output.gif --duration 0.5 --loop 0
+    imgif ./my_images output.gif --duration 0.5 --loop 0
 
     # See all options
-    img2gif --help
+    imgif --help
     ```
 
 === "Advanced Config"
 
     ```python
-    from img2gif import ImageToGifConverter, GifConfig
+    from imgif import ImageToGifConverter, GifConfig
 
     # Create custom configuration
     config = GifConfig(
@@ -68,18 +68,18 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
 
 ## Installation
 
-Install img2gif using pip:
+Install imgif using pip:
 
 ```bash
-pip install img2gif
+pip install imgif
 ```
 
 For development:
 
 ```bash
 # Clone the repository
-git clone https://github.com/atick-faisal/img2gif.git
-cd img2gif
+git clone https://github.com/atick-faisal/imgif.git
+cd imgif
 
 # Install with uv
 uv sync
@@ -92,9 +92,9 @@ uv sync
 - 📚 [API Reference](api/converter.md) - Detailed API documentation
 - 💻 [CLI Reference](guide/cli.md) - Command-line usage
 
-## Why img2gif?
+## Why imgif?
 
-Creating animated GIFs from images shouldn't be complicated. img2gif provides a clean, intuitive API that makes GIF creation fun and straightforward, while still offering powerful configuration options for advanced users.
+Creating animated GIFs from images shouldn't be complicated. imgif provides a clean, intuitive API that makes GIF creation fun and straightforward, while still offering powerful configuration options for advanced users.
 
 !!! tip "Perfect for"
     - 📸 Creating animations from screenshots
@@ -106,8 +106,8 @@ Creating animated GIFs from images shouldn't be complicated. img2gif provides a 
 
 ## Community & Support
 
-- 🐛 [Report Issues](https://github.com/atick-faisal/img2gif/issues)
-- 💬 [Discussions](https://github.com/atick-faisal/img2gif/discussions)
+- 🐛 [Report Issues](https://github.com/atick-faisal/imgif/issues)
+- 💬 [Discussions](https://github.com/atick-faisal/imgif/discussions)
 - 🤝 [Contributing Guide](contributing/development.md)
 
 ---

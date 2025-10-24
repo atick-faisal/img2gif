@@ -1,6 +1,6 @@
-# 🤝 Contributing to img2gif
+# 🤝 Contributing to imgif
 
-Thank you for your interest in contributing to img2gif! We love community contributions and appreciate your help making this library even better! 🎉
+Thank you for your interest in contributing to imgif! We love community contributions and appreciate your help making this library even better! 🎉
 
 ## 🚀 Getting Started
 
@@ -14,8 +14,8 @@ Thank you for your interest in contributing to img2gif! We love community contri
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/atick-faisal/img2gif.git
-   cd img2gif
+   git clone https://github.com/atick-faisal/imgif.git
+   cd imgif
    ```
 
 2. **Install dependencies**
@@ -177,7 +177,7 @@ Be kind, respectful, and constructive. We're all here to learn and build somethi
 
 ## 🎉 Recognition
 
-All contributors will be recognized in our README and release notes. Thank you for making img2gif better! 🙏
+All contributors will be recognized in our README and release notes. Thank you for making imgif better! 🙏
 
 ## ❓ Questions?
 

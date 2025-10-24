@@ -1,12 +1,12 @@
-# 📚 MkDocs configuration for img2gif documentation
+# 📚 MkDocs configuration for imgif documentation
 
-site_name: "🎬 img2gif"
+site_name: "🎬 imgif"
 site_description: "A playful Python library for converting image sequences into animated GIFs"
 site_author: "Atick Faisal"
-site_url: "https://img2gif.readthedocs.io"
+site_url: "https://imgif.readthedocs.io"
 
-repo_name: "atick-faisal/img2gif"
-repo_url: "https://github.com/atick-faisal/img2gif"
+repo_name: "atick-faisal/imgif"
+repo_url: "https://github.com/atick-faisal/imgif"
 edit_uri: "edit/main/docs/"
 
 # Theme configuration 🎨
@@ -113,9 +113,9 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/atick-faisal/img2gif
+      link: https://github.com/atick-faisal/imgif
     - icon: fontawesome/brands/python
-      link: https://pypi.org/project/img2gif/
+      link: https://pypi.org/project/imgif/
 
   version:
     provider: mike

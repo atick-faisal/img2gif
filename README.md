@@ -1,13 +1,13 @@
-# 🎬 img2gif
+# 🎬 imgif
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://github.com/atick-faisal/img2gif/workflows/CI/badge.svg)](https://github.com/atick-faisal/img2gif/actions)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/atick-faisal/img2gif)
+[![Tests](https://github.com/atick-faisal/imgif/workflows/CI/badge.svg)](https://github.com/atick-faisal/imgif/actions)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/atick-faisal/imgif)
 
 > ✨ A playful Python library for converting image sequences into animated GIFs with ease!
 
-Turn your image sequences into delightful animated GIFs with just a few lines of code. Whether you're creating animations from screenshots, visualizing data, or just having fun, `img2gif` makes it simple and enjoyable! 🚀
+Turn your image sequences into delightful animated GIFs with just a few lines of code. Whether you're creating animations from screenshots, visualizing data, or just having fun, `imgif` makes it simple and enjoyable! 🚀
 
 ## 🌟 Features
 
@@ -23,10 +23,10 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
 
 ```bash
 # Using pip
-pip install img2gif
+pip install imgif
 
 # Using uv (recommended for development)
-uv pip install img2gif
+uv pip install imgif
 ```
 
 ## 🚀 Quick Start
@@ -53,18 +53,18 @@ print("🎉 GIF created successfully!")
 
 ```bash
 # Basic usage
-img2gif ./my_images output.gif
+imgif ./my_images output.gif
 
 # With options
-img2gif ./my_images output.gif --duration 0.5 --loop 0
+imgif ./my_images output.gif --duration 0.5 --loop 0
 
 # See all options
-img2gif --help
+imgif --help
 ```
 
 ## 📖 Documentation
 
-Full documentation is available at [img2gif.readthedocs.io](https://img2gif.readthedocs.io) (coming soon!)
+Full documentation is available at [imgif.readthedocs.io](https://imgif.readthedocs.io) (coming soon!)
 
 ## 🛠️ Development
 
@@ -72,8 +72,8 @@ Full documentation is available at [img2gif.readthedocs.io](https://img2gif.read
 
 ```bash
 # Clone the repository
-git clone https://github.com/atick-faisal/img2gif.git
-cd img2gif
+git clone https://github.com/atick-faisal/imgif.git
+cd imgif
 
 # Install dependencies using uv
 uv sync

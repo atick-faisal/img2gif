@@ -1,13 +1,13 @@
 # 🚀 Quick Start
 
-Get up and running with img2gif in 5 minutes!
+Get up and running with imgif in 5 minutes!
 
 ## Basic Usage
 
 ### 1. Import the Library
 
 ```python
-from img2gif import ImageToGifConverter
+from imgif import ImageToGifConverter
 ```
 
 ### 2. Create a Converter
@@ -30,17 +30,17 @@ That's it! 🎉
 
 ## Command Line Usage
 
-You can also use img2gif from the command line:
+You can also use imgif from the command line:
 
 ```bash
 # Basic conversion
-img2gif ./my_images output.gif
+imgif ./my_images output.gif
 
 # With custom duration
-img2gif ./my_images output.gif --duration 0.5
+imgif ./my_images output.gif --duration 0.5
 
 # With loop count
-img2gif ./my_images output.gif --loop 3
+imgif ./my_images output.gif --loop 3
 ```
 
 ## Advanced Configuration
@@ -48,7 +48,7 @@ img2gif ./my_images output.gif --loop 3
 For more control, use `GifConfig`:
 
 ```python
-from img2gif import ImageToGifConverter, GifConfig
+from imgif import ImageToGifConverter, GifConfig
 
 # Create configuration
 config = GifConfig(
@@ -104,10 +104,10 @@ converter.convert_with_config("./frames", "output.gif", config)
 
 ## Error Handling
 
-img2gif provides clear error messages:
+imgif provides clear error messages:
 
 ```python
-from img2gif import ImageToGifConverter, InvalidInputError
+from imgif import ImageToGifConverter, InvalidInputError
 
 converter = ImageToGifConverter()
 

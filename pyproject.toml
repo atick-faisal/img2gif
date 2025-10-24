@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "img2gif"
+name = "imgif"
 version = "0.1.0"
 description = "🎬 A playful Python library for converting image sequences into animated GIFs"
 readme = "README.md"
@@ -47,13 +47,13 @@ docs = [
 ]
 
 [project.scripts]
-img2gif = "img2gif.cli:main"
+imgif = "img2gif.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/atick-faisal/img2gif"
-Documentation = "https://img2gif.readthedocs.io"
-Repository = "https://github.com/atick-faisal/img2gif"
-Issues = "https://github.com/atick-faisal/img2gif/issues"
+Homepage = "https://github.com/atick-faisal/imgif"
+Documentation = "https://imgif.readthedocs.io"
+Repository = "https://github.com/atick-faisal/imgif"
+Issues = "https://github.com/atick-faisal/imgif/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/img2gif"]

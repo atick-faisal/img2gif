@@ -7,13 +7,13 @@
 
 ## Install from PyPI
 
-The easiest way to install img2gif is from PyPI:
+The easiest way to install imgif is from PyPI:
 
 ```bash
-pip install img2gif
+pip install imgif
 ```
 
-This will install img2gif and all required dependencies.
+This will install imgif and all required dependencies.
 
 ## Install from Source
 
@@ -21,8 +21,8 @@ For development or to get the latest features:
 
 ```bash
 # Clone the repository
-git clone https://github.com/atick-faisal/img2gif.git
-cd img2gif
+git clone https://github.com/atick-faisal/imgif.git
+cd imgif
 
 # Using uv (recommended)
 uv sync
@@ -33,19 +33,19 @@ pip install -e ".[dev]"
 
 ## Verify Installation
 
-Check that img2gif is installed correctly:
+Check that imgif is installed correctly:
 
 ```bash
 # Check version
-img2gif --help
+imgif --help
 
 # Or in Python
-python -c "import img2gif; print(img2gif.__version__)"
+python -c "import imgif; print(imgif.__version__)"
 ```
 
 ## Dependencies
 
-img2gif requires the following packages:
+imgif requires the following packages:
 
 - **Pillow** (≥10.0.0) - Image I/O and GIF operations 📸
 - **rich** (≥13.7.0) - Beautiful terminal output 💎
@@ -58,7 +58,7 @@ All dependencies are automatically installed.
 For development:
 
 ```bash
-pip install img2gif[dev]
+pip install imgif[dev]
 ```
 
 This includes:
@@ -70,7 +70,7 @@ This includes:
 For documentation:
 
 ```bash
-pip install img2gif[docs]
+pip install imgif[docs]
 ```
 
 This includes:
@@ -80,7 +80,7 @@ This includes:
 
 ## Next Steps
 
-Now that you have img2gif installed:
+Now that you have imgif installed:
 
 - 🚀 [Quick Start Guide](quickstart.md) - Create your first GIF
 - 🎨 [Examples](examples.md) - See what's possible
