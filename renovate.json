@@ -6,6 +6,9 @@
     ":semanticCommits",
     ":preserveSemverRanges"
   ],
+  "lockFileMaintenance": {
+    "enabled": true
+  },
   "packageRules": [
     {
       "matchUpdateTypes": ["minor", "patch"],
@@ -26,8 +29,5 @@
   "commitMessagePrefix": "chore(deps):",
   "commitMessageAction": "update",
   "commitMessageTopic": "{{depName}}",
-  "timezone": "UTC",
-  "python": {
-    "enabled": true
-  }
+  "timezone": "UTC"
 }
