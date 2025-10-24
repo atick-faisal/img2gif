@@ -16,16 +16,27 @@ imgif follows these testing principles:
 
 ### Directory Structure
 
-The test directory mirrors the source tree:
+Tests are organized into unit and end-to-end (E2E) test directories:
 
 ```
 tests/
-├── test_converter.py      # Tests for converter.py
-├── test_config.py         # Tests for config.py
-├── test_exceptions.py     # Tests for exceptions.py
-├── test_cli.py            # Tests for cli.py
-├── test_types.py          # Tests for types.py
-└── conftest.py            # Shared fixtures
+├── __init__.py            # Test package initialization
+├── conftest.py            # Shared fixtures
+├── unit/                  # Unit tests
+│   ├── __init__.py
+│   ├── test_cli.py        # Tests for CLI
+│   ├── test_config.py     # Tests for configuration
+│   └── test_converter.py  # Tests for converter
+├── e2e/                   # End-to-end tests
+│   ├── __init__.py
+│   └── test_workflow.py   # Complete workflow tests
+└── fixtures/              # Test data and generation
+    ├── README.md          # Fixture documentation
+    ├── generate_test_images.py  # Image generation script
+    ├── basic_sequence/    # Sequential test images
+    ├── formats/           # Various image formats
+    ├── single/            # Single test image
+    └── sizes/             # Different dimensions
 ```
 
 ### Test Organization
@@ -67,14 +78,20 @@ class TestClassName:
 # Run all tests
 hatch run test
 
+# Run only unit tests
+hatch run pytest tests/unit/
+
+# Run only E2E tests
+hatch run pytest tests/e2e/
+
 # Run specific test file
-hatch run pytest tests/test_converter.py
+hatch run pytest tests/unit/test_converter.py
 
 # Run specific test class
-hatch run pytest tests/test_converter.py::TestImageToGifConverter
+hatch run pytest tests/unit/test_converter.py::TestImageToGifConverter
 
 # Run specific test method
-hatch run pytest tests/test_converter.py::TestImageToGifConverter::test_convert
+hatch run pytest tests/unit/test_converter.py::TestImageToGifConverter::test_convert
 
 # Run with verbose output
 hatch run pytest -v
@@ -582,7 +599,7 @@ hatch run pytest --cov=src --cov-report=term-missing
 
 ```bash
 # Run single test
-hatch run pytest tests/test_converter.py::test_convert -vv
+hatch run pytest tests/unit/test_converter.py::test_convert -vv
 
 # Run with pdb debugger
 hatch run pytest --pdb

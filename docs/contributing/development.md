@@ -69,11 +69,18 @@ img2gif/
 │       ├── types.py       # Type definitions
 │       ├── cli.py         # CLI implementation
 │       └── __main__.py    # Entry point
-├── tests/                 # Test suite (mirrors src structure)
-│   ├── test_converter.py
-│   ├── test_config.py
-│   ├── test_exceptions.py
-│   └── test_cli.py
+├── tests/                 # Test suite
+│   ├── __init__.py
+│   ├── conftest.py        # Shared fixtures
+│   ├── unit/              # Unit tests
+│   │   ├── test_cli.py
+│   │   ├── test_config.py
+│   │   └── test_converter.py
+│   ├── e2e/               # E2E tests
+│   │   └── test_workflow.py
+│   └── fixtures/          # Test data
+│       ├── generate_test_images.py
+│       └── ...
 ├── docs/                  # Documentation
 │   ├── index.md
 │   ├── getting-started/
@@ -113,7 +120,7 @@ Always run tests before committing:
 hatch run test
 
 # Run specific test file
-hatch run pytest tests/test_converter.py
+hatch run pytest tests/unit/test_converter.py
 
 # Run with coverage
 hatch run pytest --cov=src --cov-report=term-missing
@@ -284,7 +291,7 @@ hatch run test
 hatch run pytest tests/test_converter.py
 
 # Run specific test
-hatch run pytest tests/test_converter.py::test_convert
+hatch run pytest tests/unit/test_converter.py::test_convert
 
 # Run with verbose output
 hatch run pytest -v
