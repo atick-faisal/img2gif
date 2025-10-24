@@ -67,7 +67,7 @@ jobs:
         if: matrix.python-version == '3.11'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-          file: ./coverage.xml
+          files: ./coverage.xml
           fail_ci_if_error: false
 
   # ✅ All checks passed
