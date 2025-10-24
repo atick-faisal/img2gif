@@ -425,17 +425,43 @@ uv add pillow --upgrade
 
 ## Pre-commit Hooks
 
-Pre-commit hooks automatically run linting and tests:
+Pre-commit hooks automatically run linting and formatting before each commit.
 
 ### Setup
 
-Hooks are configured in `.pre-commit-config.yaml` (if available) or run manually:
+Install pre-commit hooks once after cloning the repository:
 
 ```bash
-# Before committing, always run:
-ruff format .
-ruff check --fix .
-hatch run test
+# Install pre-commit hooks
+uv run pre-commit install
+
+# Verify installation
+uv run pre-commit run --all-files
+```
+
+### What the Hooks Do
+
+The pre-commit hooks automatically:
+
+- **Lint code** with ruff (auto-fixes issues when possible)
+- **Format code** with ruff
+- **Trim trailing whitespace**
+- **Fix end of files** (ensures newline at end)
+- **Check YAML/JSON/TOML** files for syntax errors
+- **Check for large files** (>1MB)
+- **Check for merge conflicts**
+
+### Running Manually
+
+```bash
+# Run all hooks on all files
+uv run pre-commit run --all-files
+
+# Run hooks on staged files only
+uv run pre-commit run
+
+# Update hook versions
+uv run pre-commit autoupdate
 ```
 
 ### Bypass Hooks (Not Recommended)
@@ -445,6 +471,8 @@ Only in emergencies:
 ```bash
 git commit --no-verify -m "emergency fix"
 ```
+
+**Note**: All commits should pass pre-commit hooks before pushing to ensure CI passes.
 
 ## Continuous Integration
 

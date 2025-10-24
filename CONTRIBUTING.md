@@ -25,10 +25,15 @@ Thank you for your interest in contributing to imgif! We love community contribu
 
 3. **Install pre-commit hooks**
    ```bash
-   pre-commit install
+   uv run pre-commit install
    ```
 
-4. **Create a new branch**
+4. **Verify setup**
+   ```bash
+   uv run pre-commit run --all-files
+   ```
+
+5. **Create a new branch**
    ```bash
    git checkout -b feature/your-feature-name
    ```

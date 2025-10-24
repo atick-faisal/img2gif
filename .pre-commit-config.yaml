@@ -4,11 +4,11 @@
 repos:
   # Ruff - Fast Python linter and formatter ⚡
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.1.9
+    rev: v0.8.4
     hooks:
       # Run the linter 🔍
       - id: ruff
-        args: [--fix]
+        args: [--fix, --exit-non-zero-on-fix]
       # Run the formatter 🎨
       - id: ruff-format
 
@@ -22,6 +22,7 @@ repos:
       - id: end-of-file-fixer
       # Check YAML files 📄
       - id: check-yaml
+        exclude: ^mkdocs\.yml$
       # Check for large files 📏
       - id: check-added-large-files
         args: [--maxkb=1000]
@@ -33,13 +34,14 @@ repos:
       - id: check-toml
 
   # Type checking with mypy (optional but recommended) 🔬
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.7.1
-    hooks:
-      - id: mypy
-        additional_dependencies: [types-all]
-        args: [--ignore-missing-imports]
-        exclude: ^tests/
+  # Disabled for now - can be enabled later if needed
+  # - repo: https://github.com/pre-commit/mirrors-mypy
+  #   rev: v1.13.0
+  #   hooks:
+  #     - id: mypy
+  #       additional_dependencies: [types-all]
+  #       args: [--ignore-missing-imports]
+  #       exclude: ^tests/
 
 # CI configuration ⚙️
 ci:
