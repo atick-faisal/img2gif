@@ -5,8 +5,8 @@ site_description: "A playful Python library for converting image sequences into 
 site_author: "Atick Faisal"
 site_url: "https://imgif.readthedocs.io"
 
-repo_name: "atick-faisal/imgif"
-repo_url: "https://github.com/atick-faisal/imgif"
+repo_name: "atick-faisal/img2gif"
+repo_url: "https://github.com/atick-faisal/img2gif"
 edit_uri: "edit/main/docs/"
 
 # Theme configuration 🎨
@@ -113,7 +113,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/atick-faisal/imgif
+      link: https://github.com/atick-faisal/img2gif
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/imgif/
 

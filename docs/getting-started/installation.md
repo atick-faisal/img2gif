@@ -21,8 +21,8 @@ For development or to get the latest features:
 
 ```bash
 # Clone the repository
-git clone https://github.com/atick-faisal/imgif.git
-cd imgif
+git clone https://github.com/atick-faisal/img2gif.git
+cd img2gif
 
 # Using uv (recommended)
 uv sync

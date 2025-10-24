@@ -14,8 +14,8 @@ Thank you for your interest in contributing to imgif! We love community contribu
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/atick-faisal/imgif.git
-   cd imgif
+   git clone https://github.com/atick-faisal/img2gif.git
+   cd img2gif
    ```
 
 2. **Install dependencies**

@@ -78,8 +78,8 @@ For development:
 
 ```bash
 # Clone the repository
-git clone https://github.com/atick-faisal/imgif.git
-cd imgif
+git clone https://github.com/atick-faisal/img2gif.git
+cd img2gif
 
 # Install with uv
 uv sync
@@ -106,8 +106,8 @@ Creating animated GIFs from images shouldn't be complicated. imgif provides a cl
 
 ## Community & Support
 
-- 🐛 [Report Issues](https://github.com/atick-faisal/imgif/issues)
-- 💬 [Discussions](https://github.com/atick-faisal/imgif/discussions)
+- 🐛 [Report Issues](https://github.com/atick-faisal/img2gif/issues)
+- 💬 [Discussions](https://github.com/atick-faisal/img2gif/discussions)
 - 🤝 [Contributing Guide](contributing/development.md)
 
 ---

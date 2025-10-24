@@ -50,10 +50,10 @@ docs = [
 imgif = "img2gif.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/atick-faisal/imgif"
+Homepage = "https://github.com/atick-faisal/img2gif"
 Documentation = "https://imgif.readthedocs.io"
-Repository = "https://github.com/atick-faisal/imgif"
-Issues = "https://github.com/atick-faisal/imgif/issues"
+Repository = "https://github.com/atick-faisal/img2gif"
+Issues = "https://github.com/atick-faisal/img2gif/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/img2gif"]
