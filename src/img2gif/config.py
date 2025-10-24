@@ -63,25 +63,19 @@ class GifConfig:
         """
         # Validate loop count
         if self.loop < 0:
-            raise InvalidConfigurationError(
-                f"Loop count must be >= 0, got {self.loop}"
-            )
+            raise InvalidConfigurationError(f"Loop count must be >= 0, got {self.loop}")
 
         # Validate duration
         if self.fps is None:
             # Using duration
             if isinstance(self.duration, (int, float)):
                 if self.duration <= 0:
-                    raise InvalidConfigurationError(
-                        f"Duration must be > 0, got {self.duration}"
-                    )
+                    raise InvalidConfigurationError(f"Duration must be > 0, got {self.duration}")
             elif isinstance(self.duration, list):
                 if not self.duration:
                     raise InvalidConfigurationError("Duration list cannot be empty")
                 if any(d <= 0 for d in self.duration):
-                    raise InvalidConfigurationError(
-                        "All duration values must be > 0"
-                    )
+                    raise InvalidConfigurationError("All duration values must be > 0")
             else:
                 raise InvalidConfigurationError(
                     f"Duration must be float or list of floats, got {type(self.duration)}"
@@ -90,9 +84,7 @@ class GifConfig:
         # Validate FPS (if provided)
         if self.fps is not None:
             if self.fps <= 0:
-                raise InvalidConfigurationError(
-                    f"FPS must be > 0, got {self.fps}"
-                )
+                raise InvalidConfigurationError(f"FPS must be > 0, got {self.fps}")
 
         # Validate quality
         if not 1 <= self.quality <= 100:
@@ -102,14 +94,10 @@ class GifConfig:
 
         # Validate dimensions
         if self.width is not None and self.width <= 0:
-            raise InvalidConfigurationError(
-                f"Width must be > 0, got {self.width}"
-            )
+            raise InvalidConfigurationError(f"Width must be > 0, got {self.width}")
 
         if self.height is not None and self.height <= 0:
-            raise InvalidConfigurationError(
-                f"Height must be > 0, got {self.height}"
-            )
+            raise InvalidConfigurationError(f"Height must be > 0, got {self.height}")
 
     def get_duration(self) -> Duration:
         """

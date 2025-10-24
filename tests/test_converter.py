@@ -42,9 +42,7 @@ class TestImageToGifConverter:
         # Check it's a set (no duplicates)
         assert isinstance(formats, set)
 
-    def test_convert_directory_basic(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_directory_basic(self, sample_images_dir: Path, output_path: Path) -> None:
         """✅ Test basic conversion from directory of images."""
         converter = ImageToGifConverter()
         converter.convert(sample_images_dir, output_path)
@@ -62,18 +60,14 @@ class TestImageToGifConverter:
         assert output_path.exists()
         assert output_path.stat().st_size > 0
 
-    def test_convert_with_custom_duration(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_with_custom_duration(self, sample_images_dir: Path, output_path: Path) -> None:
         """✅ Test conversion with custom duration parameter."""
         converter = ImageToGifConverter()
         converter.convert(sample_images_dir, output_path, duration=0.5)
 
         assert output_path.exists()
 
-    def test_convert_with_duration_list(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_with_duration_list(self, sample_images_dir: Path, output_path: Path) -> None:
         """✅ Test conversion with list of durations per frame."""
         converter = ImageToGifConverter()
         # Different duration for each frame
@@ -81,9 +75,7 @@ class TestImageToGifConverter:
 
         assert output_path.exists()
 
-    def test_convert_with_loop_count(
-        self, sample_images_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_with_loop_count(self, sample_images_dir: Path, output_path: Path) -> None:
         """✅ Test conversion with specific loop count."""
         converter = ImageToGifConverter()
         converter.convert(sample_images_dir, output_path, loop=3)
@@ -102,9 +94,7 @@ class TestImageToGifConverter:
         assert nested_output.exists()
         assert nested_output.parent.exists()
 
-    def test_convert_mixed_files_directory(
-        self, mixed_files_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_mixed_files_directory(self, mixed_files_dir: Path, output_path: Path) -> None:
         """✅ Test conversion from directory with mixed file types."""
         converter = ImageToGifConverter()
         converter.convert(mixed_files_dir, output_path)
@@ -112,9 +102,7 @@ class TestImageToGifConverter:
         # Should only process image files
         assert output_path.exists()
 
-    def test_convert_various_formats(
-        self, various_formats_dir: Path, output_path: Path
-    ) -> None:
+    def test_convert_various_formats(self, various_formats_dir: Path, output_path: Path) -> None:
         """✅ Test conversion with various image formats."""
         converter = ImageToGifConverter()
         converter.convert(various_formats_dir, output_path)
