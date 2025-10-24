@@ -15,5 +15,26 @@ __version__ = "0.0.1"
 __author__ = "img2gif contributors"
 __license__ = "MIT"
 
-# Public API exports will be added as we implement the library
-__all__ = ["__version__"]
+# Public API exports 🎉
+from .converter import ImageToGifConverter
+from .exceptions import (
+    ConversionError,
+    ImageLoadError,
+    Img2GifError,
+    InvalidConfigurationError,
+    InvalidInputError,
+    NoImagesFoundError,
+)
+
+__all__ = [
+    "__version__",
+    # Core converter
+    "ImageToGifConverter",
+    # Exceptions
+    "Img2GifError",
+    "InvalidInputError",
+    "NoImagesFoundError",
+    "ImageLoadError",
+    "ConversionError",
+    "InvalidConfigurationError",
+]
