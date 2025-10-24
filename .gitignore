@@ -50,6 +50,9 @@ uv.lock
 docs/_build/
 site/
 
+# Claude Code
+.claude/
+
 # Misc
 *.log
 .mypy_cache/

@@ -47,8 +47,7 @@ python -c "import img2gif; print(img2gif.__version__)"
 
 img2gif requires the following packages:
 
-- **imageio** (≥2.31.0) - Core image I/O operations 📸
-- **imageio-ffmpeg** (≥0.4.9) - Video codec support
+- **Pillow** (≥10.0.0) - Image I/O and GIF operations 📸
 - **rich** (≥13.7.0) - Beautiful terminal output 💎
 - **click** (≥8.1.0) - CLI interface 🖱️
 

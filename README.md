@@ -12,7 +12,7 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
 ## 🌟 Features
 
 - 🎨 **Simple API** - Convert images to GIF in just 3 lines of code
-- ⚡ **Fast & Efficient** - Built on top of imageio for optimal performance
+- ⚡ **Fast & Efficient** - Built on Pillow for optimal performance
 - 🎛️ **Highly Configurable** - Control duration, quality, size, and more
 - 💻 **CLI Interface** - Use directly from the command line
 - 📝 **Fully Typed** - Complete type annotations for great IDE support
@@ -115,7 +115,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 🙏 Acknowledgments
 
-- Built with [imageio](https://imageio.readthedocs.io/) 📸
+- Built with [Pillow](https://pillow.readthedocs.io/) 📸
 - CLI powered by [click](https://click.palletsprojects.com/) 🖱️
 - Beautiful output by [rich](https://rich.readthedocs.io/) 💎
 
