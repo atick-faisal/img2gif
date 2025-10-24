@@ -11,9 +11,8 @@ test images are provided. To replace with real images:
 """
 
 from pathlib import Path
-from typing import List
 
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 
 
 def generate_basic_sequence(
@@ -21,7 +20,7 @@ def generate_basic_sequence(
     count: int = 5,
     size: tuple[int, int] = (200, 200),
     prefix: str = "frame",
-) -> List[Path]:
+) -> list[Path]:
     """Generate a basic sequence of test images with changing colors.
 
     Args:
@@ -69,7 +68,7 @@ def generate_basic_sequence(
         draw.text((x, y), text, fill=(255, 255, 255))
 
         # Save image
-        path = output_dir / f"{prefix}_{i+1:03d}.png"
+        path = output_dir / f"{prefix}_{i + 1:03d}.png"
         img.save(path)
         paths.append(path)
 
@@ -124,7 +123,7 @@ def generate_different_formats(
 
 def generate_different_sizes(
     output_dir: Path,
-) -> List[Path]:
+) -> list[Path]:
     """Generate test images with different dimensions.
 
     Args:
@@ -150,7 +149,7 @@ def generate_different_sizes(
         (200, 200, 100),
     ]
 
-    for i, (size, color) in enumerate(zip(sizes, colors)):
+    for size, color in zip(sizes, colors):
         img = Image.new("RGB", size, color=color)
 
         # Draw size label
