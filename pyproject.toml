@@ -10,7 +10,7 @@ readme = "README.md"
 requires-python = ">=3.9"
 license = { text = "MIT" }
 authors = [
-    { name = "img2gif contributors" },
+    { name = "Atick Faisal", email = "atickfaisal@gmail.com" },
 ]
 keywords = ["gif", "image", "animation", "converter", "pillow"]
 classifiers = [
@@ -50,10 +50,10 @@ docs = [
 img2gif = "img2gif.cli:main"
 
 [project.urls]
-Homepage = "https://github.com/yourusername/img2gif"
+Homepage = "https://github.com/atick-faisal/img2gif"
 Documentation = "https://img2gif.readthedocs.io"
-Repository = "https://github.com/yourusername/img2gif"
-Issues = "https://github.com/yourusername/img2gif/issues"
+Repository = "https://github.com/atick-faisal/img2gif"
+Issues = "https://github.com/atick-faisal/img2gif/issues"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/img2gif"]

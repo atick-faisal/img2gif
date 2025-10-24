@@ -35,5 +35,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Detailed error messages
 - Verbose mode for debugging
 
-[Unreleased]: https://github.com/yourusername/img2gif/compare/v0.0.1...HEAD
-[0.0.1]: https://github.com/yourusername/img2gif/releases/tag/v0.0.1
+[Unreleased]: https://github.com/atick-faisal/img2gif/compare/v0.0.1...HEAD
+[0.0.1]: https://github.com/atick-faisal/img2gif/releases/tag/v0.0.1

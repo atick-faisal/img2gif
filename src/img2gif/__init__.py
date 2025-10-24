@@ -12,7 +12,7 @@ Example:
 """
 
 __version__ = "0.1.0"
-__author__ = "img2gif contributors"
+__author__ = "Atick Faisal"
 __license__ = "MIT"
 
 # Public API exports 🎉
