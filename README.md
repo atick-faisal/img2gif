@@ -2,8 +2,8 @@
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://github.com/yourusername/img2gif/workflows/CI/badge.svg)](https://github.com/yourusername/img2gif/actions)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/yourusername/img2gif)
+[![Tests](https://github.com/atick-faisal/img2gif/workflows/CI/badge.svg)](https://github.com/atick-faisal/img2gif/actions)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/atick-faisal/img2gif)
 
 > ✨ A playful Python library for converting image sequences into animated GIFs with ease!
 
@@ -72,7 +72,7 @@ Full documentation is available at [img2gif.readthedocs.io](https://img2gif.read
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/img2gif.git
+git clone https://github.com/atick-faisal/img2gif.git
 cd img2gif
 
 # Install dependencies using uv

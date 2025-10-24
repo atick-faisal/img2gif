@@ -2,11 +2,11 @@
 
 site_name: "🎬 img2gif"
 site_description: "A playful Python library for converting image sequences into animated GIFs"
-site_author: "img2gif contributors"
+site_author: "Atick Faisal"
 site_url: "https://img2gif.readthedocs.io"
 
-repo_name: "yourusername/img2gif"
-repo_url: "https://github.com/yourusername/img2gif"
+repo_name: "atick-faisal/img2gif"
+repo_url: "https://github.com/atick-faisal/img2gif"
 edit_uri: "edit/main/docs/"
 
 # Theme configuration 🎨
@@ -113,7 +113,7 @@ plugins:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/yourusername/img2gif
+      link: https://github.com/atick-faisal/img2gif
     - icon: fontawesome/brands/python
       link: https://pypi.org/project/img2gif/
 
@@ -121,4 +121,4 @@ extra:
     provider: mike
 
 # Copyright
-copyright: Copyright &copy; 2025 img2gif contributors
+copyright: Copyright &copy; 2025 Atick Faisal

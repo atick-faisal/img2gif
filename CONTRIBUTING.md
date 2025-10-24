@@ -14,7 +14,7 @@ Thank you for your interest in contributing to img2gif! We love community contri
 
 1. **Fork and clone the repository**
    ```bash
-   git clone https://github.com/yourusername/img2gif.git
+   git clone https://github.com/atick-faisal/img2gif.git
    cd img2gif
    ```
 
