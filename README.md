@@ -3,10 +3,12 @@
 
 
 
-[![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
-[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
-[![Tests](https://github.com/atick-faisal/img2gif/workflows/CI/badge.svg)](https://github.com/atick-faisal/img2gif/actions)
-[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/atick-faisal/img2gif)
+<p align="center">
+    <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&colorA=363a4f&colorB=8aadf4&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&colorA=363a4f&colorB=a6da95&logo=opensourceinitiative&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&colorA=363a4f&colorB=a6da95&logo=githubactions&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Coverage-82%25-brightgreen?style=for-the-badge&colorA=363a4f&colorB=eed49f&logo=codecov&logoColor=white"/>
+</p>
 
 > ✨ A playful Python library for converting image sequences into animated GIFs with ease!
 
