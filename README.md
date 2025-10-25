@@ -1,4 +1,7 @@
-# 🎬 imgif
+<div align="center"><a href="https://donate.unrwa.org/int/en/general"><img src="https://raw.githubusercontent.com/Safouene1/support-palestine-banner/master/banner-support.svg" alt="Support Palestine" style="width: 100%;"></a></div>
+<img width="100%" alt="imgif_banner" src="https://github.com/user-attachments/assets/a8637f6f-70d6-4ec5-b827-c3d836543256" />
+
+
 
 [![Python Version](https://img.shields.io/badge/python-3.9%2B-blue.svg)](https://www.python.org/downloads/)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
