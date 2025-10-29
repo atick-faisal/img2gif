@@ -305,13 +305,13 @@ hatch run pytest --cov=src --cov-report=html
 Test across multiple Python versions:
 
 ```bash
-# Test on all Python versions (3.9, 3.11, 3.13)
+# Test on all Python versions (3.9, 3.11, 3.14)
 hatch run test:all
 
 # Test on specific version
 hatch run test:py39
 hatch run test:py311
-hatch run test:py313
+hatch run test:py314
 ```
 
 ### Writing Tests
@@ -483,7 +483,7 @@ git commit --no-verify -m "emergency fix"
 Runs on every push and PR:
 
 - Linting with ruff
-- Tests on Python 3.9, 3.11, 3.13
+- Tests on Python 3.9, 3.11, 3.14
 - Coverage reporting
 
 #### CD Workflow

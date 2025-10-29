@@ -2,7 +2,7 @@
 <img width="100%" alt="imgif_banner" src="https://github.com/user-attachments/assets/a8637f6f-70d6-4ec5-b827-c3d836543256" />
 
 <p align="center">
-    <img src="https://img.shields.io/badge/Python-3.9%2B-blue?style=for-the-badge&colorA=363a4f&colorB=8aadf4&logo=python&logoColor=white"/>
+    <img src="https://img.shields.io/badge/Python-3.9--3.14-blue?style=for-the-badge&colorA=363a4f&colorB=8aadf4&logo=python&logoColor=white"/>
     <img src="https://img.shields.io/badge/License-MIT-green?style=for-the-badge&colorA=363a4f&colorB=a6da95&logo=opensourceinitiative&logoColor=white"/>
     <img src="https://img.shields.io/badge/Tests-Passing-success?style=for-the-badge&colorA=363a4f&colorB=a6da95&logo=githubactions&logoColor=white"/>
     <img src="https://img.shields.io/badge/Coverage-82%25-brightgreen?style=for-the-badge&colorA=363a4f&colorB=eed49f&logo=codecov&logoColor=white"/>
@@ -70,7 +70,7 @@ imgif --help
 ## 📖 Documentation
 <img src="https://img.shields.io/badge/Docs-ReadTheDocs-blue?style=for-the-badge&colorA=363a4f&colorB=8bd5ca&logo=readthedocs&logoColor=white"/>
 
-Full documentation is available at [imgif.readthedocs.io](https://imgif.readthedocs.io) 
+Full documentation is available at [imgif.readthedocs.io](https://imgif.readthedocs.io)
 
 ## 🛠️ Development
 
