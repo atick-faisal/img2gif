@@ -32,7 +32,7 @@ dependencies = [
     "Pillow>=10.0.0",
 ]
 
-[project.optional-dependencies]
+[dependency-groups]
 dev = [
     "pytest>=7.4.0",
     "pytest-cov>=4.1.0",
@@ -137,4 +137,17 @@ exclude_lines = [
     "raise AssertionError",
     "raise NotImplementedError",
     "if __name__ == .__main__.:",
+]
+
+[tool.uv]
+# Default dependency groups to install with `uv sync`
+default-groups = ["dev"]
+
+# Package configuration - this is a library/package
+package = true
+
+# Cache invalidation - rebuild when these files change
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "src/img2gif/__init__.py" },
 ]
