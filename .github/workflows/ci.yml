@@ -63,7 +63,7 @@ jobs:
         run: uv run pytest --cov=src/img2gif --cov-report=xml --cov-report=term-missing
 
       - name: 📊 Upload coverage to Codecov
-        uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5
+        uses: codecov/codecov-action@671740ac38dd9b0130fbe1cec585b89eea48d3de # v5
         if: matrix.python-version == '3.11'
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
