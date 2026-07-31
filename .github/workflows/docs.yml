@@ -37,7 +37,7 @@ jobs:
         uses: astral-sh/setup-uv@6dfebec6ddbcd197e02256fbdf54deb334fb7f06 # v2
 
       - name: 🔧 Install dependencies with uv
-        run: uv sync --group docs
+        run: uv sync --group docs --locked
 
       - name: 🏗️ Build documentation
         run: uv run mkdocs build --verbose
