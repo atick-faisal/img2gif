@@ -4,13 +4,15 @@
 repos:
   # Ruff - Fast Python linter and formatter ⚡
   - repo: https://github.com/astral-sh/ruff-pre-commit
-    rev: v0.8.4
+    rev: v0.16.1
     hooks:
       # Run the linter 🔍
       - id: ruff
         args: [--fix, --exit-non-zero-on-fix]
       # Run the formatter 🎨
+      # markdown is added so docs code blocks match what CI checks
       - id: ruff-format
+        types_or: [python, pyi, jupyter, markdown]
 
   # Basic pre-commit hooks 🧹
   - repo: https://github.com/pre-commit/pre-commit-hooks
