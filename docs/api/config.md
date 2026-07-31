@@ -7,6 +7,7 @@ The `GifConfig` class provides configuration options for customizing GIF generat
 ```python
 from imgif import GifConfig
 
+
 @dataclass
 class GifConfig:
     """Configuration options for GIF generation."""
@@ -62,20 +63,10 @@ from imgif import GifConfig
 config = GifConfig()
 
 # Custom configuration
-config = GifConfig(
-    fps=10,
-    loop=0,
-    optimize=True,
-    width=800
-)
+config = GifConfig(fps=10, loop=0, optimize=True, width=800)
 
 # High-quality configuration
-config = GifConfig(
-    fps=30,
-    quality=95,
-    width=1920,
-    optimize=False
-)
+config = GifConfig(fps=30, quality=95, width=1920, optimize=False)
 ```
 
 ## Attributes
@@ -109,9 +100,9 @@ config = GifConfig(duration=[1.0, 0.5, 0.5, 2.0])
 Number of times the GIF should loop.
 
 ```python
-config = GifConfig(loop=0)   # Infinite
-config = GifConfig(loop=1)   # Play once
-config = GifConfig(loop=3)   # Loop 3 times
+config = GifConfig(loop=0)  # Infinite
+config = GifConfig(loop=1)  # Play once
+config = GifConfig(loop=3)  # Loop 3 times
 ```
 
 **Validation:**
@@ -132,9 +123,9 @@ config = GifConfig(loop=3)   # Loop 3 times
 Frames per second (alternative to `duration`).
 
 ```python
-config = GifConfig(fps=10)   # 10 FPS (0.1s per frame)
-config = GifConfig(fps=24)   # 24 FPS (smooth)
-config = GifConfig(fps=None) # Use duration instead
+config = GifConfig(fps=10)  # 10 FPS (0.1s per frame)
+config = GifConfig(fps=24)  # 24 FPS (smooth)
+config = GifConfig(fps=None)  # Use duration instead
 ```
 
 **Validation:**
@@ -157,9 +148,9 @@ duration = 1.0 / fps
 Quality level for optimization (higher = better quality).
 
 ```python
-config = GifConfig(quality=60)   # Lower quality, smaller file
-config = GifConfig(quality=85)   # Balanced (default)
-config = GifConfig(quality=95)   # High quality, larger file
+config = GifConfig(quality=60)  # Lower quality, smaller file
+config = GifConfig(quality=85)  # Balanced (default)
+config = GifConfig(quality=95)  # High quality, larger file
 ```
 
 **Validation:**
@@ -174,7 +165,7 @@ config = GifConfig(quality=95)   # High quality, larger file
 Whether to optimize the GIF for smaller file size.
 
 ```python
-config = GifConfig(optimize=True)   # Enable optimization
+config = GifConfig(optimize=True)  # Enable optimization
 config = GifConfig(optimize=False)  # Disable (default)
 ```
 
@@ -191,7 +182,7 @@ config = GifConfig(optimize=False)  # Disable (default)
 Target width in pixels.
 
 ```python
-config = GifConfig(width=800)   # Resize to 800px wide
+config = GifConfig(width=800)  # Resize to 800px wide
 config = GifConfig(width=None)  # Keep original width
 ```
 
@@ -208,7 +199,7 @@ Target height in pixels.
 
 ```python
 config = GifConfig(height=600)  # Resize to 600px tall
-config = GifConfig(height=None) # Keep original height
+config = GifConfig(height=None)  # Keep original height
 ```
 
 **Validation:**
@@ -225,13 +216,13 @@ Whether to maintain aspect ratio when resizing.
 ```python
 config = GifConfig(
     width=800,
-    maintain_aspect_ratio=True  # Height calculated automatically
+    maintain_aspect_ratio=True,  # Height calculated automatically
 )
 
 config = GifConfig(
     width=800,
     height=600,
-    maintain_aspect_ratio=False  # Force exact size
+    maintain_aspect_ratio=False,  # Force exact size
 )
 ```
 
@@ -393,6 +384,7 @@ from imgif import create_config
 # Equivalent to GifConfig(fps=10, optimize=True)
 config = create_config(fps=10, optimize=True)
 
+
 # Programmatic configuration
 def get_config(preset):
     presets = {
@@ -400,6 +392,7 @@ def get_config(preset):
         "hq": {"fps": 30, "quality": 95},
     }
     return create_config(**presets[preset])
+
 
 config = get_config("web")
 ```
@@ -422,14 +415,14 @@ All parameters are validated in `__post_init__()`:
 ```python
 # These raise InvalidConfigurationError
 
-GifConfig(loop=-1)           # ❌ Loop must be >= 0
-GifConfig(duration=0)        # ❌ Duration must be > 0
-GifConfig(duration=-0.5)     # ❌ Duration must be > 0
-GifConfig(fps=0)             # ❌ FPS must be > 0
-GifConfig(quality=0)         # ❌ Quality must be 1-100
-GifConfig(quality=150)       # ❌ Quality must be 1-100
-GifConfig(width=0)           # ❌ Width must be > 0
-GifConfig(width=-100)        # ❌ Width must be > 0
+GifConfig(loop=-1)  # ❌ Loop must be >= 0
+GifConfig(duration=0)  # ❌ Duration must be > 0
+GifConfig(duration=-0.5)  # ❌ Duration must be > 0
+GifConfig(fps=0)  # ❌ FPS must be > 0
+GifConfig(quality=0)  # ❌ Quality must be 1-100
+GifConfig(quality=150)  # ❌ Quality must be 1-100
+GifConfig(width=0)  # ❌ Width must be > 0
+GifConfig(width=-100)  # ❌ Width must be > 0
 ```
 
 ## Type Aliases
@@ -450,50 +443,27 @@ Can be either:
 ### Web-Optimized
 
 ```python
-web_config = GifConfig(
-    fps=10,
-    optimize=True,
-    width=800,
-    maintain_aspect_ratio=True,
-    loop=0
-)
+web_config = GifConfig(fps=10, optimize=True, width=800, maintain_aspect_ratio=True, loop=0)
 ```
 
 ### High Quality
 
 ```python
 hq_config = GifConfig(
-    fps=30,
-    quality=95,
-    optimize=False,
-    width=1920,
-    maintain_aspect_ratio=True,
-    loop=0
+    fps=30, quality=95, optimize=False, width=1920, maintain_aspect_ratio=True, loop=0
 )
 ```
 
 ### Thumbnail
 
 ```python
-thumb_config = GifConfig(
-    fps=8,
-    optimize=True,
-    width=200,
-    maintain_aspect_ratio=True,
-    loop=0
-)
+thumb_config = GifConfig(fps=8, optimize=True, width=200, maintain_aspect_ratio=True, loop=0)
 ```
 
 ### Social Media
 
 ```python
-social_config = GifConfig(
-    fps=15,
-    optimize=True,
-    width=640,
-    maintain_aspect_ratio=True,
-    loop=0
-)
+social_config = GifConfig(fps=15, optimize=True, width=640, maintain_aspect_ratio=True, loop=0)
 ```
 
 ## Usage with Converter
@@ -524,14 +494,10 @@ converter.convert_with_config("./batch3", "out3.gif", config)
 
 ```python
 def create_optimized_gif(input_path, output_path, size):
-    config = GifConfig(
-        fps=10,
-        optimize=True,
-        width=size,
-        maintain_aspect_ratio=True
-    )
+    config = GifConfig(fps=10, optimize=True, width=size, maintain_aspect_ratio=True)
     converter = ImageToGifConverter()
     converter.convert_with_config(input_path, output_path, config)
+
 
 create_optimized_gif("./images", "small.gif", 400)
 create_optimized_gif("./images", "large.gif", 1200)

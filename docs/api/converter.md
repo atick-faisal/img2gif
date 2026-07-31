@@ -7,6 +7,7 @@ The `ImageToGifConverter` class is the main interface for converting image seque
 ```python
 from imgif import ImageToGifConverter
 
+
 class ImageToGifConverter:
     """Converts sequences of images into animated GIF files."""
 ```
@@ -77,18 +78,11 @@ converter = ImageToGifConverter()
 converter.convert("./frames", "output.gif")
 
 # Custom duration and loop
-converter.convert(
-    input_path="./images",
-    output_path="./animation.gif",
-    duration=0.5,
-    loop=3
-)
+converter.convert(input_path="./images", output_path="./animation.gif", duration=0.5, loop=3)
 
 # Variable frame durations
 converter.convert(
-    input_path="./images",
-    output_path="./variable.gif",
-    duration=[1.0, 0.5, 0.5, 2.0]
+    input_path="./images", output_path="./variable.gif", duration=[1.0, 0.5, 0.5, 2.0]
 )
 ```
 
@@ -139,13 +133,7 @@ converter.convert_with_config("./frames", "output.gif", config)
 
 # Advanced configuration
 config = GifConfig(
-    fps=24,
-    loop=0,
-    width=800,
-    height=600,
-    maintain_aspect_ratio=True,
-    optimize=True,
-    quality=90
+    fps=24, loop=0, width=800, height=600, maintain_aspect_ratio=True, optimize=True, quality=90
 )
 converter.convert_with_config("./images", "optimized.gif", config)
 ```
@@ -360,12 +348,7 @@ For fine-grained control:
 ```python
 from imgif import ImageToGifConverter, GifConfig
 
-config = GifConfig(
-    fps=24,
-    optimize=True,
-    width=800,
-    quality=90
-)
+config = GifConfig(fps=24, optimize=True, width=800, quality=90)
 
 converter = ImageToGifConverter()
 converter.convert_with_config("./images", "output.gif", config)
@@ -403,10 +386,7 @@ converter = ImageToGifConverter()
 formats = converter.get_supported_formats()
 
 # Filter files by supported formats
-image_files = [
-    f for f in os.listdir("./images")
-    if os.path.splitext(f)[1].lower() in formats
-]
+image_files = [f for f in os.listdir("./images") if os.path.splitext(f)[1].lower() in formats]
 print(f"Found {len(image_files)} supported images")
 ```
 
@@ -442,10 +422,12 @@ The `ImageToGifConverter` class is **not thread-safe**. Each thread should creat
 from concurrent.futures import ThreadPoolExecutor
 from imgif import ImageToGifConverter
 
+
 def convert_batch(input_dir, output_path):
     # Create converter instance per thread
     converter = ImageToGifConverter()
     converter.convert(input_dir, output_path)
+
 
 with ThreadPoolExecutor(max_workers=4) as executor:
     executor.map(convert_batch, input_dirs, output_paths)

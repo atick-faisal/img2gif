@@ -359,6 +359,7 @@ from imgif import ImageToGifConverter, Img2GifError
 
 logger = logging.getLogger(__name__)
 
+
 def create_gif_safely(input_path, output_path):
     """Create GIF with comprehensive error handling."""
     try:
@@ -398,6 +399,7 @@ def create_gif_safely(input_path, output_path):
 import time
 from imgif import ImageToGifConverter, ConversionError
 
+
 def create_gif_with_retry(input_path, output_path, max_retries=3):
     """Create GIF with retry logic for transient failures."""
     converter = ImageToGifConverter()
@@ -421,6 +423,7 @@ def create_gif_with_retry(input_path, output_path, max_retries=3):
 from pathlib import Path
 from imgif import ImageToGifConverter, ImageLoadError
 
+
 def create_gif_skip_corrupted(input_dir, output_path):
     """Create GIF, skipping corrupted images."""
     from PIL import Image
@@ -442,11 +445,7 @@ def create_gif_skip_corrupted(input_dir, output_path):
     # Create GIF from valid images
     # (Note: This is a simplified example)
     valid_images[0].save(
-        output_path,
-        save_all=True,
-        append_images=valid_images[1:],
-        duration=1000,
-        loop=0
+        output_path, save_all=True, append_images=valid_images[1:], duration=1000, loop=0
     )
 ```
 
@@ -458,9 +457,9 @@ All exceptions include context about what failed:
 try:
     converter.convert("./images", "output.gif")
 except InvalidInputError as e:
-    print(f"Error: {e}")           # User-friendly message
+    print(f"Error: {e}")  # User-friendly message
     print(f"Type: {type(e).__name__}")  # Exception type
-    print(f"Args: {e.args}")       # Exception arguments
+    print(f"Args: {e.args}")  # Exception arguments
 ```
 
 ## Best Practices
