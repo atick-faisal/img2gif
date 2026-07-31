@@ -19,12 +19,7 @@ The simplest way to create a GIF:
 from imgif import ImageToGifConverter
 
 converter = ImageToGifConverter()
-converter.convert(
-    input_path="./images",
-    output_path="./output.gif",
-    duration=0.5,
-    loop=0
-)
+converter.convert(input_path="./images", output_path="./output.gif", duration=0.5, loop=0)
 ```
 
 **Parameters:**
@@ -41,19 +36,10 @@ For more control, use `convert_with_config()` with a `GifConfig` object:
 ```python
 from imgif import ImageToGifConverter, GifConfig
 
-config = GifConfig(
-    fps=10,
-    loop=0,
-    width=800,
-    optimize=True
-)
+config = GifConfig(fps=10, loop=0, width=800, optimize=True)
 
 converter = ImageToGifConverter()
-converter.convert_with_config(
-    input_path="./images",
-    output_path="./output.gif",
-    config=config
-)
+converter.convert_with_config(input_path="./images", output_path="./output.gif", config=config)
 ```
 
 ## Input Formats
@@ -118,7 +104,7 @@ Set the same duration for all frames:
 converter.convert(
     input_path="./images",
     output_path="./output.gif",
-    duration=0.5  # 500ms per frame
+    duration=0.5,  # 500ms per frame
 )
 ```
 
@@ -130,7 +116,7 @@ Set different durations for each frame:
 converter.convert(
     input_path="./images",
     output_path="./output.gif",
-    duration=[1.0, 0.5, 0.5, 2.0]  # custom timing per frame
+    duration=[1.0, 0.5, 0.5, 2.0],  # custom timing per frame
 )
 ```
 
@@ -175,9 +161,9 @@ imgif automatically handles different image color modes:
 
 ```python
 # These all work seamlessly
-converter.convert("./rgba_images", "output.gif")     # RGBA → RGB
-converter.convert("./grayscale", "output.gif")       # Gray → RGB
-converter.convert("./mixed_modes", "output.gif")     # Mixed → Normalized
+converter.convert("./rgba_images", "output.gif")  # RGBA → RGB
+converter.convert("./grayscale", "output.gif")  # Gray → RGB
+converter.convert("./mixed_modes", "output.gif")  # Mixed → Normalized
 ```
 
 ### Image Order
@@ -226,7 +212,7 @@ from imgif import (
     InvalidInputError,
     NoImagesFoundError,
     ImageLoadError,
-    ConversionError
+    ConversionError,
 )
 
 converter = ImageToGifConverter()
@@ -254,11 +240,7 @@ For most use cases, the simple pattern is enough:
 ```python
 from imgif import ImageToGifConverter
 
-ImageToGifConverter().convert(
-    "./screenshots",
-    "./demo.gif",
-    duration=0.5
-)
+ImageToGifConverter().convert("./screenshots", "./demo.gif", duration=0.5)
 ```
 
 ### Reusing Converter
@@ -282,11 +264,7 @@ Create a configuration once and use it multiple times:
 from imgif import ImageToGifConverter, GifConfig
 
 # Define once
-web_config = GifConfig(
-    fps=10,
-    optimize=True,
-    width=800
-)
+web_config = GifConfig(fps=10, optimize=True, width=800)
 
 converter = ImageToGifConverter()
 

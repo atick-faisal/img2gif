@@ -192,6 +192,7 @@ Write tests before implementing:
 import pytest
 from imgif import ImageToGifConverter
 
+
 def test_new_feature():
     """Test the new feature."""
     converter = ImageToGifConverter()
@@ -322,6 +323,7 @@ Follow these guidelines:
 import pytest
 from pathlib import Path
 from imgif import ImageToGifConverter
+
 
 class TestConverter:
     """Test suite for ImageToGifConverter."""

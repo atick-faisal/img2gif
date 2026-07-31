@@ -9,12 +9,7 @@ The `GifConfig` class provides fine-grained control over GIF generation. It's us
 ```python
 from imgif import ImageToGifConverter, GifConfig
 
-config = GifConfig(
-    fps=10,
-    loop=0,
-    optimize=True,
-    width=800
-)
+config = GifConfig(fps=10, loop=0, optimize=True, width=800)
 
 converter = ImageToGifConverter()
 converter.convert_with_config("./images", "output.gif", config)
@@ -52,7 +47,7 @@ Frames per second (alternative to duration).
 ```python
 config = GifConfig(fps=10)  # 10 frames per second (100ms per frame)
 config = GifConfig(fps=24)  # 24 fps (smooth animation)
-config = GifConfig(fps=5)   # 5 fps (slow animation)
+config = GifConfig(fps=5)  # 5 fps (slow animation)
 ```
 
 The relationship between FPS and duration:
@@ -174,14 +169,14 @@ Whether to maintain aspect ratio when resizing.
 # Maintain aspect ratio (recommended)
 config = GifConfig(
     width=800,
-    maintain_aspect_ratio=True  # height calculated automatically
+    maintain_aspect_ratio=True,  # height calculated automatically
 )
 
 # Force exact dimensions (may distort)
 config = GifConfig(
     width=800,
     height=600,
-    maintain_aspect_ratio=False  # exact size, possible distortion
+    maintain_aspect_ratio=False,  # exact size, possible distortion
 )
 ```
 
@@ -199,11 +194,11 @@ Perfect for websites and social media:
 
 ```python
 web_config = GifConfig(
-    fps=10,                      # smooth but not excessive
-    optimize=True,               # reduce file size
-    width=800,                   # reasonable web size
+    fps=10,  # smooth but not excessive
+    optimize=True,  # reduce file size
+    width=800,  # reasonable web size
     maintain_aspect_ratio=True,  # preserve proportions
-    loop=0                       # loop forever
+    loop=0,  # loop forever
 )
 ```
 
@@ -213,12 +208,12 @@ For presentations and high-quality displays:
 
 ```python
 hq_config = GifConfig(
-    fps=30,                      # very smooth
-    quality=95,                  # high quality
-    optimize=False,              # prioritize quality
-    width=1920,                  # Full HD
+    fps=30,  # very smooth
+    quality=95,  # high quality
+    optimize=False,  # prioritize quality
+    width=1920,  # Full HD
     maintain_aspect_ratio=True,
-    loop=0
+    loop=0,
 )
 ```
 
@@ -228,11 +223,11 @@ Optimized for Twitter, Instagram, etc.:
 
 ```python
 social_config = GifConfig(
-    fps=15,                      # balanced smoothness
-    optimize=True,               # smaller upload
-    width=640,                   # common social media size
+    fps=15,  # balanced smoothness
+    optimize=True,  # smaller upload
+    width=640,  # common social media size
     maintain_aspect_ratio=True,
-    loop=0
+    loop=0,
 )
 ```
 
@@ -242,11 +237,11 @@ Small preview animations:
 
 ```python
 thumb_config = GifConfig(
-    fps=8,                       # lower fps for small size
-    optimize=True,               # maximize compression
-    width=200,                   # thumbnail size
+    fps=8,  # lower fps for small size
+    optimize=True,  # maximize compression
+    width=200,  # thumbnail size
     maintain_aspect_ratio=True,
-    loop=0
+    loop=0,
 )
 ```
 
@@ -256,12 +251,12 @@ Precise sizing for game assets:
 
 ```python
 sprite_config = GifConfig(
-    fps=12,                      # sprite animation speed
+    fps=12,  # sprite animation speed
     width=256,
     height=256,
-    maintain_aspect_ratio=False, # exact size needed
-    optimize=False,              # preserve quality
-    loop=0
+    maintain_aspect_ratio=False,  # exact size needed
+    optimize=False,  # preserve quality
+    loop=0,
 )
 ```
 
@@ -281,6 +276,7 @@ This is useful for programmatic configuration:
 ```python
 from imgif import create_config
 
+
 def make_gif_config(profile: str):
     profiles = {
         "web": {"fps": 10, "optimize": True, "width": 800},
@@ -288,6 +284,7 @@ def make_gif_config(profile: str):
         "thumb": {"fps": 8, "optimize": True, "width": 200},
     }
     return create_config(**profiles[profile])
+
 
 config = make_gif_config("web")
 ```
@@ -378,11 +375,7 @@ config = GifConfig(height=600, maintain_aspect_ratio=True)
 ### Both Dimensions Set (Maintain Ratio)
 
 ```python
-config = GifConfig(
-    width=800,
-    height=800,
-    maintain_aspect_ratio=True
-)
+config = GifConfig(width=800, height=800, maintain_aspect_ratio=True)
 
 # Original: 1600x1200 (4:3)
 # Result:   800x600   (fits within 800x800, maintains 4:3)
@@ -391,11 +384,7 @@ config = GifConfig(
 ### Both Dimensions Set (Force Size)
 
 ```python
-config = GifConfig(
-    width=800,
-    height=800,
-    maintain_aspect_ratio=False
-)
+config = GifConfig(width=800, height=800, maintain_aspect_ratio=False)
 
 # Original: 1600x1200 (4:3)
 # Result:   800x800   (forced to square, distorted)
@@ -410,17 +399,17 @@ Configuration choices affect file size:
 ```python
 # Smallest file size
 GifConfig(
-    fps=5,           # fewer frames
-    optimize=True,   # compression
-    width=400        # smaller dimensions
+    fps=5,  # fewer frames
+    optimize=True,  # compression
+    width=400,  # smaller dimensions
 )
 
 # Largest file size
 GifConfig(
-    fps=30,          # many frames
+    fps=30,  # many frames
     optimize=False,  # no compression
-    quality=100,     # max quality
-    width=1920       # large dimensions
+    quality=100,  # max quality
+    width=1920,  # large dimensions
 )
 ```
 
@@ -439,14 +428,14 @@ If you don't specify options, these defaults are used:
 
 ```python
 GifConfig(
-    duration=1.0,                # 1 second per frame
-    loop=0,                      # infinite loop
-    fps=None,                    # use duration instead
-    quality=85,                  # balanced quality
-    optimize=False,              # faster processing
-    width=None,                  # original width
-    height=None,                 # original height
-    maintain_aspect_ratio=True   # preserve proportions
+    duration=1.0,  # 1 second per frame
+    loop=0,  # infinite loop
+    fps=None,  # use duration instead
+    quality=85,  # balanced quality
+    optimize=False,  # faster processing
+    width=None,  # original width
+    height=None,  # original height
+    maintain_aspect_ratio=True,  # preserve proportions
 )
 ```
 

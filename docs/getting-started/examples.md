@@ -14,7 +14,7 @@ converter.convert(
     input_path="./screenshots",
     output_path="./demo.gif",
     duration=0.5,
-    loop=0  # infinite loop
+    loop=0,  # infinite loop
 )
 ```
 
@@ -29,10 +29,7 @@ converter = ImageToGifConverter()
 
 # First frame shows for 1s, second for 0.5s, third for 2s, etc.
 converter.convert(
-    input_path="./frames",
-    output_path="./custom_timing.gif",
-    duration=[1.0, 0.5, 2.0, 0.5],
-    loop=0
+    input_path="./frames", output_path="./custom_timing.gif", duration=[1.0, 0.5, 2.0, 0.5], loop=0
 )
 ```
 
@@ -45,18 +42,16 @@ from imgif import ImageToGifConverter, GifConfig
 
 # Configure for web optimization
 config = GifConfig(
-    fps=10,              # 10 frames per second
-    loop=0,              # infinite loop
-    width=800,           # resize to 800px width
-    optimize=True,       # optimize file size
-    maintain_aspect_ratio=True
+    fps=10,  # 10 frames per second
+    loop=0,  # infinite loop
+    width=800,  # resize to 800px width
+    optimize=True,  # optimize file size
+    maintain_aspect_ratio=True,
 )
 
 converter = ImageToGifConverter()
 converter.convert_with_config(
-    input_path="./screenshots",
-    output_path="./optimized.gif",
-    config=config
+    input_path="./screenshots", output_path="./optimized.gif", config=config
 )
 ```
 
@@ -68,17 +63,15 @@ Create a high-quality GIF for presentations:
 from imgif import GifConfig, ImageToGifConverter
 
 config = GifConfig(
-    fps=30,              # smooth 30 fps
-    quality=95,          # high quality
-    width=1920,          # Full HD width
-    optimize=False       # prioritize quality over size
+    fps=30,  # smooth 30 fps
+    quality=95,  # high quality
+    width=1920,  # Full HD width
+    optimize=False,  # prioritize quality over size
 )
 
 converter = ImageToGifConverter()
 converter.convert_with_config(
-    input_path="./presentation_frames",
-    output_path="./presentation.gif",
-    config=config
+    input_path="./presentation_frames", output_path="./presentation.gif", config=config
 )
 ```
 
@@ -90,11 +83,7 @@ You can also use imgif with a single image (useful for format conversion):
 from imgif import ImageToGifConverter
 
 converter = ImageToGifConverter()
-converter.convert(
-    input_path="./image.png",
-    output_path="./output.gif",
-    duration=1.0
-)
+converter.convert(input_path="./image.png", output_path="./output.gif", duration=1.0)
 ```
 
 ## Data Visualization Animation
@@ -118,7 +107,7 @@ for i in range(20):
 
     plt.figure(figsize=(10, 6))
     plt.plot(x, y)
-    plt.title(f"Sine Wave Animation - Frame {i+1}")
+    plt.title(f"Sine Wave Animation - Frame {i + 1}")
     plt.ylim(-1.5, 1.5)
     plt.savefig(frames_dir / f"frame_{i:03d}.png", dpi=100)
     plt.close()
@@ -126,14 +115,11 @@ for i in range(20):
 # Convert to GIF
 config = GifConfig(fps=10, optimize=True, width=800)
 converter = ImageToGifConverter()
-converter.convert_with_config(
-    input_path=frames_dir,
-    output_path="./sine_wave.gif",
-    config=config
-)
+converter.convert_with_config(input_path=frames_dir, output_path="./sine_wave.gif", config=config)
 
 # Cleanup temporary frames
 import shutil
+
 shutil.rmtree(frames_dir)
 
 print("Animation created successfully!")
@@ -148,18 +134,16 @@ from imgif import ImageToGifConverter, GifConfig
 
 # Create a looping sprite animation
 config = GifConfig(
-    fps=12,              # sprite animation speed
-    loop=0,              # loop forever
-    width=256,           # sprite size
+    fps=12,  # sprite animation speed
+    loop=0,  # loop forever
+    width=256,  # sprite size
     height=256,
-    maintain_aspect_ratio=False  # exact size needed
+    maintain_aspect_ratio=False,  # exact size needed
 )
 
 converter = ImageToGifConverter()
 converter.convert_with_config(
-    input_path="./sprite_frames",
-    output_path="./character_walk.gif",
-    config=config
+    input_path="./sprite_frames", output_path="./character_walk.gif", config=config
 )
 ```
 
@@ -171,18 +155,16 @@ Create a loading spinner animation that plays once:
 from imgif import ImageToGifConverter, GifConfig
 
 config = GifConfig(
-    fps=24,              # smooth animation
-    loop=1,              # play once
+    fps=24,  # smooth animation
+    loop=1,  # play once
     width=100,
     height=100,
-    optimize=True
+    optimize=True,
 )
 
 converter = ImageToGifConverter()
 converter.convert_with_config(
-    input_path="./spinner_frames",
-    output_path="./loading.gif",
-    config=config
+    input_path="./spinner_frames", output_path="./loading.gif", config=config
 )
 ```
 
@@ -201,7 +183,7 @@ converter.convert(
     input_path="./tutorial_screenshots",
     output_path="./tutorial.gif",
     duration=[2.0, 1.0, 1.0, 1.0, 2.0],  # pause on first and last
-    loop=0
+    loop=0,
 )
 ```
 
@@ -223,7 +205,7 @@ print(f"Supported formats: {formats}")
 converter.convert(
     input_path="./mixed_formats",  # contains .png, .jpg, .webp
     output_path="./combined.gif",
-    duration=0.5
+    duration=0.5,
 )
 ```
 
@@ -233,21 +215,12 @@ Handle errors gracefully in production code:
 
 ```python
 from imgif import ImageToGifConverter
-from imgif import (
-    InvalidInputError,
-    NoImagesFoundError,
-    ImageLoadError,
-    ConversionError
-)
+from imgif import InvalidInputError, NoImagesFoundError, ImageLoadError, ConversionError
 
 converter = ImageToGifConverter()
 
 try:
-    converter.convert(
-        input_path="./images",
-        output_path="./output.gif",
-        duration=0.5
-    )
+    converter.convert(input_path="./images", output_path="./output.gif", duration=0.5)
     print("Success!")
 
 except InvalidInputError as e:

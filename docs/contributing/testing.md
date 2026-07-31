@@ -174,6 +174,7 @@ Use pytest fixtures for setup and teardown:
 import pytest
 from pathlib import Path
 
+
 @pytest.fixture
 def temp_image_dir(tmp_path):
     """Create temporary directory with test images."""
@@ -182,8 +183,9 @@ def temp_image_dir(tmp_path):
 
     # Create test images
     from PIL import Image
+
     for i in range(3):
-        img = Image.new('RGB', (100, 100), color=(i*80, 100, 200))
+        img = Image.new("RGB", (100, 100), color=(i * 80, 100, 200))
         img.save(image_dir / f"frame_{i:03d}.png")
 
     return image_dir
@@ -205,31 +207,33 @@ def test_convert_with_fixture(temp_image_dir, tmp_path):
 Test multiple scenarios with parametrization:
 
 ```python
-@pytest.mark.parametrize("fps,expected_duration", [
-    (10, 0.1),
-    (20, 0.05),
-    (24, 0.041666666666666664),
-    (30, 0.03333333333333333),
-])
+@pytest.mark.parametrize(
+    "fps,expected_duration",
+    [
+        (10, 0.1),
+        (20, 0.05),
+        (24, 0.041666666666666664),
+        (30, 0.03333333333333333),
+    ],
+)
 def test_fps_to_duration(fps, expected_duration):
     """Test FPS to duration conversion."""
     config = GifConfig(fps=fps)
     assert config.get_duration() == pytest.approx(expected_duration)
 
 
-@pytest.mark.parametrize("width,height,maintain_ratio,expected", [
-    (800, None, True, (800, 600)),
-    (None, 600, True, (800, 600)),
-    (800, 800, True, (800, 600)),
-    (800, 800, False, (800, 800)),
-])
+@pytest.mark.parametrize(
+    "width,height,maintain_ratio,expected",
+    [
+        (800, None, True, (800, 600)),
+        (None, 600, True, (800, 600)),
+        (800, 800, True, (800, 600)),
+        (800, 800, False, (800, 800)),
+    ],
+)
 def test_resize_calculations(width, height, maintain_ratio, expected):
     """Test resize calculations with different configs."""
-    config = GifConfig(
-        width=width,
-        height=height,
-        maintain_aspect_ratio=maintain_ratio
-    )
+    config = GifConfig(width=width, height=height, maintain_aspect_ratio=maintain_ratio)
     result = config.get_target_size(1600, 1200)
     assert result == expected
 ```
@@ -354,12 +358,7 @@ def test_end_to_end_conversion(temp_image_dir, tmp_path):
     output = tmp_path / "animation.gif"
 
     # Execute complete workflow
-    converter.convert(
-        input_path=temp_image_dir,
-        output_path=output,
-        duration=0.5,
-        loop=0
-    )
+    converter.convert(input_path=temp_image_dir, output_path=output, duration=0.5, loop=0)
 
     # Verify results
     assert output.exists()
@@ -367,6 +366,7 @@ def test_end_to_end_conversion(temp_image_dir, tmp_path):
 
     # Verify GIF properties
     from PIL import Image
+
     with Image.open(output) as img:
         assert img.format == "GIF"
         assert img.is_animated
@@ -375,12 +375,7 @@ def test_end_to_end_conversion(temp_image_dir, tmp_path):
 def test_config_workflow(temp_image_dir, tmp_path):
     """Test conversion with configuration."""
     # Create configuration
-    config = GifConfig(
-        fps=10,
-        optimize=True,
-        width=400,
-        maintain_aspect_ratio=True
-    )
+    config = GifConfig(fps=10, optimize=True, width=400, maintain_aspect_ratio=True)
 
     # Convert with config
     converter = ImageToGifConverter()
@@ -391,6 +386,7 @@ def test_config_workflow(temp_image_dir, tmp_path):
     assert output.exists()
 
     from PIL import Image
+
     with Image.open(output) as img:
         assert img.size[0] == 400  # width was resized
 ```
@@ -420,13 +416,9 @@ def test_cli_with_options(temp_image_dir, tmp_path):
     runner = CliRunner()
     output = tmp_path / "output.gif"
 
-    result = runner.invoke(main, [
-        str(temp_image_dir),
-        str(output),
-        "--fps", "10",
-        "--optimize",
-        "--width", "800"
-    ])
+    result = runner.invoke(
+        main, [str(temp_image_dir), str(output), "--fps", "10", "--optimize", "--width", "800"]
+    )
 
     assert result.exit_code == 0
     assert output.exists()
@@ -452,7 +444,7 @@ from unittest.mock import Mock, patch
 
 def test_with_mock():
     """Test using mocks."""
-    with patch('img2gif.converter.Image') as mock_image:
+    with patch("img2gif.converter.Image") as mock_image:
         # Setup mock
         mock_img = Mock()
         mock_image.open.return_value = mock_img
@@ -477,7 +469,7 @@ from PIL import Image
 def sample_image(tmp_path):
     """Create a sample test image."""
     img_path = tmp_path / "sample.png"
-    img = Image.new('RGB', (100, 100), color='red')
+    img = Image.new("RGB", (100, 100), color="red")
     img.save(img_path)
     return img_path
 
@@ -489,7 +481,7 @@ def image_sequence(tmp_path):
     image_dir.mkdir()
 
     for i in range(5):
-        img = Image.new('RGB', (100, 100), color=(i*50, 100, 200))
+        img = Image.new("RGB", (100, 100), color=(i * 50, 100, 200))
         img.save(image_dir / f"frame_{i:03d}.png")
 
     return image_dir

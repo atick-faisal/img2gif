@@ -53,13 +53,7 @@ Turn your image sequences into delightful animated GIFs with just a few lines of
     from imgif import ImageToGifConverter, GifConfig
 
     # Create custom configuration
-    config = GifConfig(
-        fps=10,
-        loop=0,
-        width=800,
-        optimize=True,
-        maintain_aspect_ratio=True
-    )
+    config = GifConfig(fps=10, loop=0, width=800, optimize=True, maintain_aspect_ratio=True)
 
     # Convert with config
     converter = ImageToGifConverter()

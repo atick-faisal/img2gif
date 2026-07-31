@@ -81,7 +81,7 @@ message = "Hello, world!"
 config = {"key": "value"}
 
 # Also acceptable
-char = 'x'
+char = "x"
 sql = 'SELECT * FROM table WHERE name = "John"'
 ```
 
@@ -149,6 +149,7 @@ Use `Optional` for parameters that can be `None`:
 ```python
 from typing import Optional
 
+
 def resize(
     self,
     width: Optional[int] = None,
@@ -166,11 +167,14 @@ Use Python 3.9+ type syntax when possible:
 def get_files(self) -> list[Path]:
     return []
 
+
 def get_config(self) -> dict[str, object]:
     return {}
 
+
 # Avoid (old syntax)
 from typing import List, Dict
+
 
 def get_files(self) -> List[Path]:
     return []
@@ -257,6 +261,7 @@ Use comments sparingly, prefer self-documenting code:
 def calculate_aspect_ratio(width: int, height: int) -> float:
     return width / height
 
+
 # Less ideal (needs comment)
 def calc_ar(w: int, h: int) -> float:
     # Calculate aspect ratio
@@ -284,13 +289,16 @@ Use `snake_case`:
 def convert_images():
     pass
 
+
 input_path = "./images"
 output_path = "./output.gif"
 frame_duration = 0.5
 
+
 # Bad
 def ConvertImages():
     pass
+
 
 InputPath = "./images"
 ```
@@ -304,8 +312,10 @@ Use `PascalCase`:
 class ImageToGifConverter:
     pass
 
+
 class GifConfig:
     pass
+
 
 # Bad
 class image_to_gif_converter:
@@ -388,9 +398,11 @@ def validate_input(path: Path) -> None:
     if not path.exists():
         raise InvalidInputError(f"Path does not exist: {path}")
 
+
 def load_images(paths: list[Path]) -> list[Image.Image]:
     """Load images from paths."""
     return [Image.open(p) for p in paths]
+
 
 # Less ideal (too long, multiple responsibilities)
 def process_everything(path: Path) -> list[Image.Image]:
@@ -430,13 +442,17 @@ Use descriptive exception names and messages:
 # Good
 class NoImagesFoundError(Img2GifError):
     """Raised when no valid images are found in the input directory."""
+
     pass
 
+
 raise NoImagesFoundError(f"No valid images found in: {input_path}")
+
 
 # Bad
 class Error(Exception):
     pass
+
 
 raise Error("error")
 ```
@@ -451,12 +467,15 @@ Prefer `pathlib.Path` over string paths:
 # Good
 from pathlib import Path
 
+
 def process_file(path: Path) -> None:
     if path.exists():
         content = path.read_text()
 
+
 # Less ideal
 import os
+
 
 def process_file(path: str) -> None:
     if os.path.exists(path):
@@ -471,9 +490,11 @@ Use `@dataclass` for data containers:
 ```python
 from dataclasses import dataclass
 
+
 @dataclass
 class GifConfig:
     """Configuration for GIF generation."""
+
     duration: float = 1.0
     loop: int = 0
     optimize: bool = False
@@ -530,9 +551,11 @@ DEFAULT_QUALITY = 85
 MIN_QUALITY = 1
 MAX_QUALITY = 100
 
+
 def validate_quality(quality: int) -> None:
     if not MIN_QUALITY <= quality <= MAX_QUALITY:
         raise ValueError(f"Quality must be between {MIN_QUALITY} and {MAX_QUALITY}")
+
 
 # Bad
 def validate_quality(quality: int) -> None:
@@ -551,15 +574,19 @@ Use descriptive test names:
 def test_convert_creates_gif_file():
     pass
 
+
 def test_convert_raises_error_on_invalid_input():
     pass
+
 
 def test_config_validates_fps_range():
     pass
 
+
 # Bad
 def test_1():
     pass
+
 
 def test_convert():
     pass
